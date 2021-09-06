@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queries>
+  <query key="GetUsersLoginIds">
+    <mssql><![CDATA[SELECT DISTINCT
+	Users.Id
+FROM
+	Sungero_Core_Recipient As Users
+	
+INNER JOIN Sungero_System_Clients As UsersOnline ON UsersOnline.Login = Users.Login
+LEFT JOIN Sungero_System_Locks As Locks ON Locks.Login = Users.Login
+
+WHERE
+	Users.Login IS NOT NULL 
+	AND Users.IsSystem IS NULL 
+	AND Locks.Login IS NULL
+	AND Users.Status = 'Active'
+	AND (UsersOnline.ApplicationName like 'Local%' OR UsersOnline.ApplicationName like 'Web%')
+	AND DATEDIFF(minute, CAST(UsersOnline.LastActivity AS DATETIME2), CAST('{1}' AS DATETIME2)) > {2}
+	AND Users.Id not in ({0})]]></mssql>
+    <postgres><![CDATA[SELECT DISTINCT
+	Users.Id
+FROM
+	Sungero_Core_Recipient As Users
+	
+INNER JOIN Sungero_System_Clients As UsersOnline ON UsersOnline.Login = Users.Login
+LEFT JOIN Sungero_System_Locks As Locks ON Locks.Login = Users.Login
+
+WHERE
+	Users.Login IS NOT NULL 
+	AND Users.IsSystem IS NULL 
+	AND Locks.Login IS NULL
+	AND Users.Status = 'Active'
+	AND (UsersOnline.ApplicationName like 'Local%' OR UsersOnline.ApplicationName like 'Web%')
+	AND (DATE_PART('day', '{1}'::timestamp - UsersOnline.LastActivity::timestamp) * 24 + 
+     	 DATE_PART('hour', '{1}'::timestamp - UsersOnline.LastActivity::timestamp)) * 60 +
+     	 DATE_PART('minute', '{1}'::timestamp - UsersOnline.LastActivity::timestamp) > {2}
+	AND Users.Id not in ({0})]]></postgres>
+  </query>
+  <query key="SelectReseveMemberIds">
+    <default><![CDATA[SELECT 
+	Reserv.Member 
+FROM 
+	Sungero_Core_RecipientLink Reserv
+INNER JOIN Sungero_Core_Recipient ServiceRole ON Reserv.Recipient = ServiceRole.Id
+WHERE 
+	ServiceRole.Sid = '{0}']]></default>
+  </query>
+  <query key="MonitoringUsersCount">
+    <default><![CDATA[Select Count(DISTINCT Name) From Sungero_System_Clients Where Name not in ('Service User', 'Administrator')]]></default>
+  </query>
+</queries>

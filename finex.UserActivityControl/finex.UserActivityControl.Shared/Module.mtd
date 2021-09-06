@@ -1,0 +1,104 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "5ca28eef-3d39-45f8-baa4-4cf331785e25",
+  "Name": "UserActivityControl",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "finex.UserActivityControl.Client",
+  "ClientBaseAssemblyName": "finex.UserActivityControl.ClientBase",
+  "ClientBaseNamespace": "finex.UserActivityControl.ClientBase",
+  "ClientNamespace": "finex.UserActivityControl.Client",
+  "Code": "UserAct",
+  "CompanyCode": "finex",
+  "Cover": {
+    "NameGuid": "cb28e50d-ee9f-4987-b067-24eb1af3d6c4",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "a838aafc-a75e-4373-8620-268b926181e2",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "3281c917-70fe-426b-9f5a-f227050d4622",
+      "BackgroundPosition": "Stretch"
+    }
+  },
+  "Dependencies": [
+    {
+      "Id": "3293e057-599d-4248-827e-1ff462bc291b",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    }
+  ],
+  "ExplorerTreeOrder": [
+    {
+      "ItemId": "c1d11065-5070-454a-b73f-7cfe8d5f4144"
+    },
+    {
+      "ItemId": "85c6ca16-3b10-456c-84ce-74be5e801b9b",
+      "PreviousItemId": "c1d11065-5070-454a-b73f-7cfe8d5f4144"
+    }
+  ],
+  "HandledEvents": [
+    "InitializingServer"
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "finex.UserActivityControl",
+  "IsVisible": false,
+  "Jobs": [
+    {
+      "NameGuid": "287680dd-8a87-4981-8114-93e201571146",
+      "Name": "UserActivityControl",
+      "Daily": "Repeat",
+      "GenerateHandler": true,
+      "MonthSchedule": "Monthly",
+      "TimePeriod": 30
+    },
+    {
+      "NameGuid": "8379e472-5e76-42bf-b850-1f01ed0e77e6",
+      "Name": "UserMonitoring",
+      "Daily": "Repeat",
+      "GenerateHandler": true,
+      "MonthSchedule": "Monthly",
+      "TimePeriod": 30
+    }
+  ],
+  "Overridden": [
+    "IsVisible"
+  ],
+  "PublicConstants": [
+    {
+      "Name": "ReserveLicenseGuid",
+      "ParentClasses": [
+        "Module",
+        "RoleGuid"
+      ],
+      "TypeName": "System.Guid",
+      "Value": "new System.Guid(\"387494a1-0b0d-44e0-8130-b728f7e03442\")"
+    }
+  ],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "finex.UserActivityControl",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "finex.UserActivityControl.Server",
+  "ServerNamespace": "finex.UserActivityControl.Server",
+  "SharedAssemblyName": "finex.UserActivityControl.Shared",
+  "SharedNamespace": "finex.UserActivityControl.Shared",
+  "SpecialFolders": [],
+  "Version": "1.0.1.22",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

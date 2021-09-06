@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queries>
+  <query key="DropView">
+    <default><![CDATA[DROP VIEW IF EXISTS {0}]]></default>
+  </query>
+  <query key="CheckTable">
+    <mssql><![CDATA[SELECT 
+	Count(*) 
+FROM 
+	INFORMATION_SCHEMA.TABLES 
+WHERE 
+	TABLE_NAME = '{0}']]></mssql>
+  </query>
+  <query key="SelectSubordinateDepartments">
+    <mssql><![CDATA[WITH departments (Id)
+AS
+(
+	SELECT 
+		Id
+	FROM 
+		Sungero_Core_Recipient 
+	WHERE 
+		Discriminator = '{0}' AND
+		Id in ({1})
+
+	UNION ALL
+
+    SELECT 
+		Sub.Id
+	FROM 
+		Sungero_Core_Recipient Sub  
+    INNER JOIN departments ON Sub.HeadOffice_Company_Sungero = departments.Id
+    WHERE 
+		Sub.Discriminator = '{0}'
+)
+SELECT DISTINCT 
+	Id
+FROM 
+	departments
+WHERE 
+	Id is not null]]></mssql>
+    <postgres><![CDATA[WITH RECURSIVE departments (Id)
+AS
+(
+	SELECT 
+		Id
+	FROM 
+		Sungero_Core_Recipient 
+	WHERE 
+		Discriminator = '{0}' AND
+		Id in ({1})
+
+	UNION ALL
+
+    SELECT 
+		Sub.Id
+	FROM 
+		Sungero_Core_Recipient Sub  
+    INNER JOIN departments ON Sub.HeadOffice_Company_Sungero = departments.Id
+    WHERE 
+		Sub.Discriminator = '{0}'
+)
+SELECT DISTINCT 
+	Id
+FROM 
+	departments
+WHERE 
+	Id is not null]]></postgres>
+  </query>
+  <query key="SelectSuperiorDepartments">
+    <mssql><![CDATA[WITH departments (Id)
+AS
+(
+	SELECT 
+		HeadOffice_Company_Sungero
+	FROM 
+		Sungero_Core_Recipient 
+	WHERE 
+		HeadOffice_Company_Sungero IS NOT NULL AND
+		Discriminator = '{0}' AND
+		Id in ({1})
+
+	UNION ALL
+
+    SELECT 
+		Sup.HeadOffice_Company_Sungero
+	FROM 
+		Sungero_Core_Recipient Sup  
+    INNER JOIN departments ON Sup.Id = departments.Id
+    WHERE
+		Sup.HeadOffice_Company_Sungero IS NOT NULL AND
+		Sup.Discriminator = '{0}'
+)
+SELECT DISTINCT 
+	Id
+FROM 
+	departments
+WHERE 
+	Id is not null]]></mssql>
+    <postgres><![CDATA[WITH RECURSIVE departments (Id)
+AS
+(
+	SELECT 
+		HeadOffice_Company_Sungero
+	FROM 
+		Sungero_Core_Recipient 
+	WHERE 
+		HeadOffice_Company_Sungero IS NOT NULL AND
+		Discriminator = '{0}' AND
+		Id in ({1})
+
+	UNION ALL
+
+    SELECT 
+		Sup.HeadOffice_Company_Sungero
+	FROM 
+		Sungero_Core_Recipient Sup  
+    INNER JOIN departments ON Sup.Id = departments.Id
+    WHERE
+		Sup.HeadOffice_Company_Sungero IS NOT NULL AND
+		Sup.Discriminator = '{0}'
+)
+SELECT DISTINCT 
+	Id
+FROM 
+	departments
+WHERE 
+	Id is not null]]></postgres>
+  </query>
+  <query key="AlterTable">
+    <mssql><![CDATA[IF COL_LENGTH('{0}', '{1}') IS NULL 
+	ALTER TABLE {0} ADD {1} {2} {3}]]></mssql>
+  </query>
+  <query key="GetLockApplicationName">
+    <default><![CDATA[Select
+	Client.ApplicationName
+From Sungero_System_Clients As Client
+INNER JOIN Sungero_System_Locks As Locks ON Locks.ClientId = Client.Id
+Where
+	Locks.Login = {0} AND
+	Locks.EntityId = {1}]]></default>
+  </query>
+</queries>

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queries>
+  <query key="SelectTableNames">
+    <default><![CDATA[SELECT 
+	table_name as table_name 
+FROM 
+	information_schema.tables 
+WHERE 
+	table_type = 'BASE TABLE'
+	AND table_name not like '%history' 
+	AND table_name not like '%setting'
+	AND table_name not like '%settings'	
+	AND table_name not like 'sql%'
+	AND table_name not like 'pg%'
+	AND table_name not like '%system%'
+	AND table_name != 'sungero_core_accessrightent'
+	AND table_name != 'sungero_core_accessrights'
+	AND table_name != 'sungero_core_link'
+	AND table_name != 'sungero_core_folder'	
+	AND table_name != 'sungero_system_lookupstatistics'
+	AND table_name != 'sungero_core_recipientlink'
+	AND table_name != 'sungero_wf_text'
+	AND table_name != 'sungero_reports_activereports'
+	AND table_name != 'sungero_content_edocparameters'
+	AND table_name != 'sungero_content_associatedApp'
+ORDER BY 
+	table_name]]></default>
+  </query>
+  <query key="SelectColumnsNames">
+    <mssql><![CDATA[SELECT 
+	column_name, table_name
+FROM 
+	information_schema.columns 
+WHERE 
+	data_type = 'int' AND 
+	table_name = '{0}' AND 
+	(column_name like '{1}%' OR column_name = 'AttachmentId'{2})
+ORDER BY 
+	table_name, column_name]]></mssql>
+    <postgres><![CDATA[SELECT 
+	column_name, table_name
+FROM 
+	information_schema.columns 
+WHERE 
+	data_type = 'integer' AND 
+	table_name = '{0}' AND 
+	(column_name like '{1}%' OR column_name = 'AttachmentId'{2})
+ORDER BY 
+	table_name, column_name]]></postgres>
+  </query>
+  <query key="InsertEntityTableColumn">
+    <mssql><![CDATA[DECLARE @tableName AS varchar(128) = '{1}'
+DECLARE @columnName AS varchar(128) = '{2}'
+DECLARE @value AS varchar(10) = {3}
+DECLARE @reportSessionId AS varchar(256) = ', ''{4}'''
+DECLARE @objectType AS varchar(50) = ', ''NULL'''
+DECLARE @colID AS varchar(10) = '''NULL'', '
+DECLARE @colNameOrSubj AS varchar(50) = '''NULL'', '
+
+IF COL_LENGTH(@tableName, 'Id') IS NOT NULL 
+	SET @colID  = '[Id], '
+
+IF @tableName = 'sungero_wf_task' 
+BEGIN
+	SET @colNameOrSubj  = '[Subject], '	
+	SET @objectType = ', ''Задача'''
+END
+ELSE IF @tableName = 'sungero_wf_assignment' 
+BEGIN
+	SET @colNameOrSubj  = '[Subject], '	
+	SET @objectType = ', ''Задание'''
+END
+ELSE IF @tableName = 'sungero_wf_attachment' 
+BEGIN
+	SET @colNameOrSubj  = 'CONCAT(''ИД Задачи = '', [Task]), '	
+	SET @objectType = ', ''Вложение'''
+END
+ELSE IF @tableName = 'sungero_core_substitution' 
+BEGIN
+	SET @colNameOrSubj  = '[Name], '	
+	SET @objectType = ', ''Замещение'''
+END
+ELSE IF @tableName = 'sungero_core_recipient' 
+BEGIN
+	SET @colNameOrSubj  = '[Name], '	
+	SET @objectType = ', ''Реципиент'''
+END
+ELSE IF @tableName = 'sungero_docflow_project' 
+BEGIN
+	SET @colNameOrSubj  = '[Name], '	
+	SET @objectType = ', ''Проект'''
+END
+ELSE IF @tableName = 'sungero_content_edoc' 
+BEGIN
+	SET @colNameOrSubj  = '[Name], '	
+	SET @objectType = ', ''Документ'''
+END
+ELSE IF COL_LENGTH(@tableName, 'Name') IS NOT NULL  
+BEGIN
+	SET @colNameOrSubj  = '[Name], '	
+	SET @objectType = ', ''Объект (' + @tableName + ')'''
+END
+ELSE
+BEGIN
+	SET @colNameOrSubj  = 'CONCAT(''Коллекция объекта = '', [Discriminator]), '
+	SET @objectType = ', ''Коллекция (' + @tableName + ')'''
+END
+
+IF (@colID != '''NULL'', ' OR @colNameOrSubj != '''NULL'', ' OR @objectType != ', ''NULL''')
+BEGIN
+	exec('INSERT INTO {0} 
+			SELECT 
+				' + @colID + @colNameOrSubj + '''' + @tableName + '''' + @objectType + @reportSessionId + ', ''' + @columnName + '''  
+			FROM  
+				' + @tableName + ' 
+			WHERE 
+				' + @columnName + ' = ' + @value + '')
+END]]></mssql>
+    <postgres><![CDATA[DO $$ 
+	DECLARE tableName varchar(128) = '{1}';
+	DECLARE columnName varchar(128) = '{2}';	
+	DECLARE columnValue varchar(10) = {3};
+	DECLARE reportSessionId varchar(256) = ', ''{4}''';
+	DECLARE objectType varchar(50) = ', ''Коллекция (' || tableName || ')''';
+	DECLARE colID varchar(10) = '''NULL'', ';
+	DECLARE colNameOrSubj varchar(50) = '''NULL'', ';
+	
+BEGIN	
+	IF (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE Table_Name = tableName AND Column_Name = 'id')
+		THEN
+            colId = 'id, ';
+        END IF;
+	
+	CASE   	
+		WHEN (tableName = 'sungero_wf_task') 
+			THEN
+				colNameOrSubj  = 'subject,';
+				objectType = ', ''Задача''';
+		
+		WHEN (tableName = 'sungero_wf_assignment') 
+			THEN
+				colNameOrSubj  = 'subject,';
+				objectType = ', ''Задание''';
+		
+		WHEN (tableName = 'sungero_wf_attachment') 
+			THEN
+				colNameOrSubj  = '''ИД Задачи = ''' || ' || task,';
+				objectType = ', ''Вложение''';
+		
+		WHEN (tableName = 'sungero_core_substitution') 
+			THEN
+				colNameOrSubj  = 'name,';
+				objectType = ', ''Замещение''';
+		
+		WHEN (tableName = 'sungero_core_recipient') 
+			THEN
+				colNameOrSubj  = 'name,';
+				objectType = ', ''Реципиент''';
+				
+		WHEN (tableName = 'sungero_docflow_project') 
+			THEN
+				colNameOrSubj  = 'name,';
+				objectType = ', ''Проект''';
+				
+		WHEN (tableName = 'sungero_content_edoc') 
+			THEN
+				colNameOrSubj  = 'name,';
+				objectType = ', ''Документ''';
+
+		WHEN (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE Table_Name = tableName AND Column_Name = 'name') 
+			THEN
+				colNameOrSubj  = 'name,';
+				objectType = ', ''Объект (' || tableName || ')''';
+		ELSE
+	END CASE;	
+	
+	IF (@colID != '''NULL'', ' OR (@colNameOrSubj != '''NULL'', ' OR @objectType != ', ''NULL'''))
+	THEN
+		execute 'INSERT INTO {0} 
+					SELECT 
+						' ||  colId || colNameOrSubj || '''' || tableName || '''' || objectType || reportSessionId || ', ''' || columnName || ''' 
+					FROM 
+						' || tableName || ' 
+					WHERE 
+						' || columnName || ' = ' || columnValue;
+	END IF;
+END $$;]]></postgres>
+  </query>
+  <query key="SelectReportData">
+    <default><![CDATA[SELECT DISTINCT
+	Id, EntityName, EntityTableName, EntityType, ColumnName
+FROM 
+	finex_UsingDirectoryEntry_UsingRecording
+WHERE
+	EntityName IS NOT NULL 
+	AND EntityName <> '' 
+	AND ReportSessionId = @ReportSessionId]]></default>
+  </query>
+  <query key="CreateTempTable">
+    <mssql><![CDATA[CREATE TABLE {0} (
+	[Id] [int] NOT NULL, 
+	[EntityName] varchar(250) NULL, 
+	[EntityTableName] varchar(128) NULL, 
+	[EntityType] varchar(50) NULL,
+	[ReportSessionId] varchar(256) NOT NULL,
+	[ColumnName] varchar(250) NOT NULL
+)]]></mssql>
+    <postgres><![CDATA[CREATE TABLE {0} (
+	Id int NOT NULL, 
+	EntityName varchar(250) NULL, 
+	EntityTableName varchar(128) NULL, 
+	EntityType varchar(50) NULL,
+	ReportSessionId varchar(256) NOT NULL,
+	ColumnName varchar(250) NOT NULL
+)]]></postgres>
+  </query>
+  <query key="SelectColumnsAllNames">
+    <mssql><![CDATA[SELECT 
+	column_name, table_name
+FROM 
+	information_schema.columns 
+WHERE 
+	data_type = 'int'
+	AND table_name = '{0}' 	
+	AND column_name != 'id' 
+	AND column_name != 'secureobject'
+	AND column_name != 'group'
+ORDER BY 
+	table_name, column_name]]></mssql>
+    <postgres><![CDATA[SELECT 
+	column_name, table_name
+FROM 
+	information_schema.columns 
+WHERE 
+	data_type = 'integer'  
+	AND table_name = '{0}' 
+	AND column_name != 'id' 
+	AND column_name != 'secureobject'
+	AND column_name != 'group'
+ORDER BY 
+	table_name, column_name]]></postgres>
+  </query>
+</queries>

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LastVersionNotApproved_Approval" xml:space="preserve">
+    <value>Для преобразования в PDF должна быть подписана последняя версия документа согласующей подписью.</value>
+  </data>
+  <data name="LastVersionNotApproved_Endorsing" xml:space="preserve">
+    <value>Для преобразования в PDF должна быть подписана последняя версия документа удтверждающей подписью.</value>
+  </data>
+  <data name="LastVersionNotApproved_NotEndorsing" xml:space="preserve">
+    <value>Для преобразования в PDF должна быть подписана последняя версия документа с отказом в утверждении.</value>
+  </data>
+  <data name="NotDocumentVersion" xml:space="preserve">
+    <value>В документе нет ни одной версии.</value>
+  </data>
+  <data name="ShowFilesDialog_FileExtentionError" xml:space="preserve">
+    <value>Расширения файлов "*.{0}" запрещены для загрузки.</value>
+  </data>
+  <data name="ShowFilesDialog_FileSelector" xml:space="preserve">
+    <value>Файл:</value>
+  </data>
+  <data name="PdfConvertError" xml:space="preserve">
+    <value>Не удалось преобразовать документ в формат PDF.</value>
+  </data>
+  <data name="NotCurrentEmployee" xml:space="preserve">
+    <value>У текущего пользователя отсутствует сотрудник!</value>
+  </data>
+  <data name="NotCurrentEmployeeBusinessUnit" xml:space="preserve">
+    <value>У текущего сотрудника отсутствует наша организация!</value>
+  </data>
+  <data name="NotCurrentEmployeeDepartment" xml:space="preserve">
+    <value>У текущего сотрудника отсутствует подразделение!</value>
+  </data>
+  <data name="DialogCreateVersionFileTitle" xml:space="preserve">
+    <value>Создание версии документа {0}</value>
+  </data>
+  <data name="DocumentMissing" xml:space="preserve">
+    <value>Отсутствует документ. 
+Создание версии отменено!</value>
+  </data>
+  <data name="CreateVersionComplite" xml:space="preserve">
+    <value>Создание версии завершено.</value>
+  </data>
+  <data name="SignatureMarkAnchorSymbol" xml:space="preserve">
+    <value>⚓&amp;</value>
+  </data>
+  <data name="DialogsReqName_DocKind" xml:space="preserve">
+    <value>Вид документа</value>
+  </data>
+  <data name="DialogsReqName_Worker" xml:space="preserve">
+    <value>Работник</value>
+  </data>
+  <data name="DialogsReqName_Employee" xml:space="preserve">
+    <value>Сотрудник</value>
+  </data>
+  <data name="DialogsReqName_DateFrom" xml:space="preserve">
+    <value>Дата с</value>
+  </data>
+  <data name="DialogsReqName_DateTo" xml:space="preserve">
+    <value>Дата по</value>
+  </data>
+  <data name="DialogsReqName_Department" xml:space="preserve">
+    <value>Подразделение</value>
+  </data>
+  <data name="DialogsReqName_Employees" xml:space="preserve">
+    <value>Сотрудники</value>
+  </data>
+  <data name="DialogsReqName_Workers" xml:space="preserve">
+    <value>Работники</value>
+  </data>
+  <data name="DialogsReqName_Departments" xml:space="preserve">
+    <value>Подразделения</value>
+  </data>
+  <data name="DialogsReqName_CreateDateTo" xml:space="preserve">
+    <value>Дата создания по</value>
+  </data>
+  <data name="DialogsReqName_CreateDateFrom" xml:space="preserve">
+    <value>Дата создания с</value>
+  </data>
+  <data name="DialogsReqName_TypePosition" xml:space="preserve">
+    <value>Вид должности</value>
+  </data>
+</root>

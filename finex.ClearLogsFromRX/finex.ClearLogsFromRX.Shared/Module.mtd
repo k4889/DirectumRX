@@ -1,0 +1,72 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "b55a2278-88eb-45d0-b25b-050796a1a96e",
+  "Name": "ClearLogsFromRX",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "finex.ClearLogsFromRX.Client",
+  "ClientBaseAssemblyName": "finex.ClearLogsFromRX.ClientBase",
+  "ClientBaseNamespace": "finex.ClearLogsFromRX.ClientBase",
+  "ClientNamespace": "finex.ClearLogsFromRX.Client",
+  "Code": "ClearLo",
+  "CompanyCode": "finex",
+  "Cover": {
+    "NameGuid": "081d014c-f832-44b3-9d0f-8277df31289a",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "385ff7e7-4efa-4de5-a439-3a132ff87756",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "5107fabc-93f3-4e2a-bd70-ef48bcf5e35e",
+      "BackgroundPosition": "Stretch"
+    }
+  },
+  "Dependencies": [
+    {
+      "Id": "3293e057-599d-4248-827e-1ff462bc291b",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    }
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "finex.ClearLogsFromRX",
+  "IsVisible": false,
+  "Jobs": [
+    {
+      "NameGuid": "5aef76cb-3787-458f-a01e-f9107a400372",
+      "Name": "ClearLogs",
+      "GenerateHandler": true,
+      "MonthSchedule": "Monthly",
+      "StartAt": "1753-01-01T07:00:00"
+    }
+  ],
+  "Overridden": [
+    "IsVisible"
+  ],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "finex.ClearLogsFromRX",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "finex.ClearLogsFromRX.Server",
+  "ServerNamespace": "finex.ClearLogsFromRX.Server",
+  "SharedAssemblyName": "finex.ClearLogsFromRX.Shared",
+  "SharedNamespace": "finex.ClearLogsFromRX.Shared",
+  "SpecialFolders": [],
+  "Version": "1.0.1.22",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

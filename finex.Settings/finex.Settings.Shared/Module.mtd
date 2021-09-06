@@ -1,0 +1,57 @@
+{
+  "$type": "Sungero.Metadata.SolutionMetadata, Sungero.Metadata",
+  "NameGuid": "3293e057-599d-4248-827e-1ff462bc291b",
+  "Name": "Settings",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "finex.Settings.Client",
+  "ClientBaseAssemblyName": "finex.Settings.ClientBase",
+  "ClientBaseNamespace": "finex.Settings.ClientBase",
+  "ClientNamespace": "finex.Settings.Client",
+  "Code": "Setting",
+  "CompanyCode": "finex",
+  "Cover": {
+    "NameGuid": "442a7ea6-37fd-452c-b4e5-03623f3d4f8a",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "51785229-7b49-4d55-b6d2-ffbc245580a4",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "1181740f-f781-4b88-8170-d5c0027ec67e",
+      "BackgroundPosition": "Stretch"
+    }
+  },
+  "DesktopViews": [],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "finex.Settings",
+  "OrderedSpecialFolders": [],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "finex.Settings",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "finex.Settings.Server",
+  "ServerNamespace": "finex.Settings.Server",
+  "SharedAssemblyName": "finex.Settings.Shared",
+  "SharedNamespace": "finex.Settings.Shared",
+  "SpecialFolders": [],
+  "Version": "1.0.1.22",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "SolutionMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "ModuleMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$type": "Sungero.Metadata.EntityMetadata, Sungero.Metadata",
+  "NameGuid": "dbb12eb6-c060-4e8d-b023-020884305eea",
+  "Name": "CaseTransferHistoryErrors",
+  "AccessRightsMode": "NoRight",
+  "BaseGuid": "a3d38bf5-0414-41f6-bb33-a4621d2e5a60",
+  "CanBeNavigationPropertyType": true,
+  "Code": "CaseTransferH4",
+  "ExtraSearchProperties": [],
+  "IsChildEntity": true,
+  "Properties": [
+    {
+      "$type": "Sungero.Metadata.NavigationPropertyMetadata, Sungero.Metadata",
+      "NameGuid": "c1762a49-8730-478b-a754-20e771c9bb4b",
+      "Name": "CaseTransferHistory",
+      "CanBeSearch": false,
+      "Code": "CaseTransferHi",
+      "EntityGuid": "980fcc9b-1a2c-4c4e-b4ef-d341037fdef9",
+      "IsReferenceToRootEntity": true,
+      "IsShowedInList": false
+    },
+    {
+      "$type": "Sungero.Metadata.DateTimePropertyMetadata, Sungero.Metadata",
+      "NameGuid": "60c16618-c056-476d-9452-46b3b700ea8e",
+      "Name": "DateError",
+      "CanBeSearch": false,
+      "Code": "DateError",
+      "DateTimeFormat": "DateTime",
+      "IsEnabled": false,
+      "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.DateTimeEditorToDateTimeBinder",
+      "PreviousPropertyGuid": "c1762a49-8730-478b-a754-20e771c9bb4b"
+    },
+    {
+      "$type": "Sungero.Metadata.TextPropertyMetadata, Sungero.Metadata",
+      "NameGuid": "6c28d854-fe5b-43b5-8bad-ac7d50e2fae9",
+      "Name": "ErrorMessage",
+      "CanBeSearch": false,
+      "Code": "ErrorMessage",
+      "IsEnabled": false,
+      "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.MultilineStringEditorToTextBinder",
+      "PreviousPropertyGuid": "60c16618-c056-476d-9452-46b3b700ea8e"
+    }
+  ],
+  "PublicStructures": [],
+  "RibbonCardMetadata": {
+    "NameGuid": "516fe51d-d028-4701-a445-1315733918f4",
+    "Name": "RibbonCard",
+    "Categories": [],
+    "Elements": [],
+    "Groups": [],
+    "IsAncestorMetadata": true,
+    "Pages": [],
+    "RibbonKind": "Card"
+  },
+  "RibbonCollectionMetadata": {
+    "NameGuid": "b86fc2bb-8ed1-47e1-af96-5d3db53bf47b",
+    "Name": "RibbonCollection",
+    "Categories": [],
+    "Elements": [],
+    "Groups": [],
+    "IsAncestorMetadata": true,
+    "Pages": []
+  },
+  "Versions": [
+    {
+      "Type": "EntityMetadata",
+      "Number": 9
+    }
+  ]
+}

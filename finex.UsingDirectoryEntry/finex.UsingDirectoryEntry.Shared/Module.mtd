@@ -1,0 +1,142 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "9377af4f-686b-4fed-ab18-1897d9e1e115",
+  "Name": "UsingDirectoryEntry",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "finex.UsingDirectoryEntry.Client",
+  "ClientBaseAssemblyName": "finex.UsingDirectoryEntry.ClientBase",
+  "ClientBaseNamespace": "finex.UsingDirectoryEntry.ClientBase",
+  "ClientNamespace": "finex.UsingDirectoryEntry.Client",
+  "Code": "UsingDi",
+  "CompanyCode": "finex",
+  "Cover": {
+    "NameGuid": "badb2e38-8e09-499c-a00f-fbf5f0bb3d18",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "fb070efe-3160-4f82-87be-431c1aea2fd0",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "0e57b1d9-4cfd-432e-9520-4934e8dda3cb",
+      "BackgroundPosition": "Stretch"
+    }
+  },
+  "Dependencies": [
+    {
+      "Id": "3293e057-599d-4248-827e-1ff462bc291b",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    }
+  ],
+  "ExplorerTreeOrder": [
+    {
+      "ItemId": "b8893d0e-da9c-4772-8e88-8c9936f1be2b"
+    }
+  ],
+  "HandledEvents": [
+    "InitializingServer"
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "finex.UsingDirectoryEntry",
+  "IsVisible": false,
+  "Overridden": [
+    "IsVisible"
+  ],
+  "PublicFunctions": [
+    {
+      "Name": "OpenUsingRecordReport",
+      "Parameters": [
+        {
+          "Name": "entityID",
+          "ParameterType": "global::System.Int32",
+          "ParameterTypeFullName": "System.Int32"
+        },
+        {
+          "Name": "dbTableName",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "objectName",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "additionalColums",
+          "ParameterType": "global::System.Collections.Generic.List<global::System.String>",
+          "ParameterTypeFullName": "System.Collections.Generic.List"
+        }
+      ],
+      "Placement": "Client",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
+      "Name": "OpenUsingRecordReport",
+      "Parameters": [
+        {
+          "Name": "entityID",
+          "ParameterType": "global::System.Int32",
+          "ParameterTypeFullName": "System.Int32"
+        },
+        {
+          "Name": "dbTableName",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "objectName",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        }
+      ],
+      "Placement": "Client",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
+      "Name": "OpenUsingRecordReport",
+      "Parameters": [
+        {
+          "Name": "entityID",
+          "ParameterType": "global::System.Int32",
+          "ParameterTypeFullName": "System.Int32"
+        },
+        {
+          "Name": "objectName",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        }
+      ],
+      "Placement": "Client",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    }
+  ],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "finex.UsingDirectoryEntry",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "finex.UsingDirectoryEntry.Server",
+  "ServerNamespace": "finex.UsingDirectoryEntry.Server",
+  "SharedAssemblyName": "finex.UsingDirectoryEntry.Shared",
+  "SharedNamespace": "finex.UsingDirectoryEntry.Shared",
+  "SpecialFolders": [],
+  "Version": "1.0.1.22",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

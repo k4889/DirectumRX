@@ -1,0 +1,180 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "884eae26-0435-4a19-9cb1-f1bb93d6fa7e",
+  "Name": "Certificates",
+  "AsyncHandlers": [
+    {
+      "NameGuid": "3b895ba2-6ca6-47da-9c35-ef3755dd29e5",
+      "Name": "CloseCertificate",
+      "DelayPeriod": 15,
+      "DelayStrategy": "ExponentialDelayStrategy",
+      "IsHandlerGenerated": true,
+      "Parameters": [
+        {
+          "NameGuid": "f12ea305-c7d7-483e-9654-e0cfe8595db6",
+          "Name": "certificateId",
+          "ParameterType": "Integer"
+        }
+      ]
+    }
+  ],
+  "ClientAssemblyName": "finex.Certificates.Client",
+  "ClientBaseAssemblyName": "finex.Certificates.ClientBase",
+  "ClientBaseNamespace": "finex.Certificates.ClientBase",
+  "ClientNamespace": "finex.Certificates.Client",
+  "Code": "Certifi",
+  "CompanyCode": "finex",
+  "Cover": {
+    "NameGuid": "47011f39-d381-479c-be7f-a54cadcb6a8b",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "f945c95f-434b-4575-8b1e-f5bcdeef4fac",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "8343760d-f95f-49e1-bc88-d934991ae77f",
+      "BackgroundPosition": "Stretch"
+    }
+  },
+  "Dependencies": [
+    {
+      "Id": "3293e057-599d-4248-827e-1ff462bc291b",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    }
+  ],
+  "HandledEvents": [
+    "InitializingServer"
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "finex.Certificates",
+  "IsVisible": false,
+  "Jobs": [
+    {
+      "NameGuid": "03acf25f-1b8c-40ab-97f2-8c78373da24e",
+      "Name": "MonitoringCertificateDates",
+      "GenerateHandler": true,
+      "MonthSchedule": "Monthly",
+      "StartAt": "1753-01-01T07:00:00"
+    }
+  ],
+  "Libraries": [
+    {
+      "NameGuid": "63fec3c1-c963-446b-96eb-12c541b7485f",
+      "Name": "Sungero",
+      "Scope": "Server"
+    }
+  ],
+  "Overridden": [
+    "IsVisible"
+  ],
+  "PublicFunctions": [
+    {
+      "Name": "CheckCopyCertificate",
+      "IsRemote": true,
+      "Parameters": [
+        {
+          "Name": "byteArray",
+          "ParameterType": "global::Sungero.Docflow.Structures.Module.IByteArray",
+          "ParameterTypeFullName": "Sungero.Docflow.Structures.Module.IByteArray"
+        }
+      ],
+      "Placement": "Shared",
+      "ReturnType": "global::System.Boolean",
+      "ReturnTypeFullName": "System.Boolean"
+    },
+    {
+      "Name": "CloseCertificateAsyncHandler",
+      "IsRemote": true,
+      "Parameters": [
+        {
+          "Name": "certificateId",
+          "ParameterType": "global::System.Int32",
+          "ParameterTypeFullName": "System.Int32"
+        }
+      ],
+      "Placement": "Shared",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
+      "Name": "CreateCertificate",
+      "IsRemote": true,
+      "Parameters": [
+        {
+          "Name": "byteArray",
+          "ParameterType": "global::Sungero.Docflow.Structures.Module.IByteArray",
+          "ParameterTypeFullName": "Sungero.Docflow.Structures.Module.IByteArray"
+        },
+        {
+          "Name": "password",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        }
+      ],
+      "Placement": "Shared",
+      "ReturnType": "global::Sungero.CoreEntities.ICertificate",
+      "ReturnTypeFullName": "Sungero.CoreEntities.ICertificate, Sungero.Domain.Shared"
+    },
+    {
+      "Name": "GetActiveCertificate",
+      "IsRemote": true,
+      "Placement": "Shared",
+      "ReturnType": "global::System.Collections.Generic.List<global::Sungero.CoreEntities.ICertificate>",
+      "ReturnTypeFullName": "System.Collections.Generic.List"
+    },
+    {
+      "Name": "GetActiveCertificateByMonitoringPeriod",
+      "IsRemote": true,
+      "Placement": "Shared",
+      "ReturnType": "global::System.Collections.Generic.List<global::Sungero.CoreEntities.ICertificate>",
+      "ReturnTypeFullName": "System.Collections.Generic.List"
+    },
+    {
+      "Name": "ShowImportCertificateDialog",
+      "Placement": "Client",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    }
+  ],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "finex.Certificates",
+  "ResourcesKeys": [
+    "NoticeSubject",
+    "ImportingCertificateDialogComplite",
+    "ImportingCertificateDialogTitle",
+    "CopyCertificateMessage",
+    "ActiveCertificatesMessage",
+    "LinkTitle",
+    "ActiveCertificatesTitle",
+    "CertificateCloseError",
+    "ButtonAdd",
+    "ButtonCancel",
+    "ButtonReplace",
+    "CertificateCloseTitle",
+    "SelectCertificateCloseMessage"
+  ],
+  "ServerAssemblyName": "finex.Certificates.Server",
+  "ServerNamespace": "finex.Certificates.Server",
+  "SharedAssemblyName": "finex.Certificates.Shared",
+  "SharedNamespace": "finex.Certificates.Shared",
+  "SpecialFolders": [],
+  "Version": "1.0.1.22",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

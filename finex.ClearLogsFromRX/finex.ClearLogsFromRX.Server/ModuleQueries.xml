@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queries>
+  <query key="GetLocksUsers">
+    <mssql><![CDATA[SELECT DISTINCT
+	Locks.Login, Recipient.Name, Locks.EntityId, Locks.EntityTypeGuid, Locks.LockTime
+FROM
+	dbo.Sungero_System_Locks As Locks
+INNER JOIN dbo.Sungero_Core_Recipient As Recipient ON Recipient.Login = Locks.Login
+INNER JOIN dbo.Sungero_System_EntityType As EntityType ON EntityType.TypeGuid = Locks.EntityTypeGuid
+Order by 
+	Locks.EntityId]]></mssql>
+    <postgres><![CDATA[SELECT DISTINCT
+	Locks.Login, Recipient.Name, Locks.EntityId, Locks.EntityTypeGuid, Locks.LockTime
+FROM
+	Sungero_System_Locks As Locks
+INNER JOIN dbo.Sungero_Core_Recipient As Recipient ON Recipient.Login = Locks.Login
+INNER JOIN dbo.Sungero_System_EntityType As EntityType ON EntityType.TypeGuid = Locks.EntityTypeGuid
+Order by 
+	Locks.EntityId]]></postgres>
+  </query>
+  <query key="DeleteUserLock">
+    <mssql><![CDATA[DELETE FROM dbo.Sungero_System_Locks WHERE EntityId = {0} AND Login = {1} AND EntityTypeGuid = '{2}']]></mssql>
+    <postgres><![CDATA[DELETE FROM Sungero_System_Locks WHERE EntityId = {0} AND Login = {1} AND EntityTypeGuid = '{2}']]></postgres>
+  </query>
+</queries>

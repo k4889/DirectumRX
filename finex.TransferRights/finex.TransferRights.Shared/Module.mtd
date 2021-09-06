@@ -1,0 +1,133 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "f5ea7de2-4e62-49b9-8b90-3e827d4c7ad6",
+  "Name": "TransferRights",
+  "AsyncHandlers": [
+    {
+      "NameGuid": "1f57f873-7b5e-4a32-815c-6d3f4a989c32",
+      "Name": "TransferRightsHandler",
+      "DelayPeriod": 60,
+      "DelayStrategy": "RegularDelayStrategy",
+      "IsHandlerGenerated": true,
+      "Parameters": [
+        {
+          "NameGuid": "73c6de8e-d53c-4ab3-8b96-f75a1bccdd46",
+          "Name": "CaseTransferHistoryId",
+          "ParameterType": "Integer"
+        }
+      ]
+    }
+  ],
+  "ClientAssemblyName": "finex.TransferRights.Client",
+  "ClientBaseAssemblyName": "finex.TransferRights.ClientBase",
+  "ClientBaseNamespace": "finex.TransferRights.ClientBase",
+  "ClientNamespace": "finex.TransferRights.Client",
+  "Code": "Transfe",
+  "CompanyCode": "finex",
+  "Cover": {
+    "NameGuid": "003b0b0d-4a02-460d-919c-3a574c3e8317",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "b0ceaadb-a283-4b63-b1d2-536dedc2dee0",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "bc346a27-08e5-4a22-8a49-403cfaf54369",
+      "BackgroundPosition": "Stretch"
+    }
+  },
+  "Dependencies": [
+    {
+      "Id": "3293e057-599d-4248-827e-1ff462bc291b",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    },
+    {
+      "Id": "92491aa6-c4df-4f46-a807-ebdd337bda74",
+      "MaxVersion": "",
+      "MinVersion": "1.1.0.0"
+    }
+  ],
+  "ExplorerTreeOrder": [
+    {
+      "ItemId": "980fcc9b-1a2c-4c4e-b4ef-d341037fdef9"
+    }
+  ],
+  "HandledEvents": [
+    "InitializingServer"
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "finex.TransferRights",
+  "IsVisible": false,
+  "Overridden": [
+    "IsVisible"
+  ],
+  "PublicFunctions": [
+    {
+      "Name": "TransferRightsDialog",
+      "Placement": "Client",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    }
+  ],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "finex.TransferRights",
+  "ResourcesKeys": [
+    "Dialog_Title",
+    "Dialog_From",
+    "Dialog_To",
+    "Dialog_DateFrom",
+    "Dialog_DateTo",
+    "Dialog_Text",
+    "Dialog_Status_NotTransfer",
+    "Dialog_Button_Transfer",
+    "Dialog_Button_Exit",
+    "Dialog_Status_All",
+    "Dialog_Status_InWork",
+    "Dialog_Status_AssignmentsTitle",
+    "Dialog_Assignments",
+    "ConfirmDialog_Title",
+    "ConfirmDialog_Description",
+    "Dialog_Status_TaskTitle",
+    "Dialog_Tasks",
+    "Dialog_CompliteMessage",
+    "Handler_Error_Subject",
+    "Handler_Error_UserNotFound",
+    "Handler_Error_RetryLimit",
+    "Dialog_UsersError",
+    "Dialog_Status_NoticeTitle",
+    "Dialog_Notices",
+    "Handler_Error_CaseTransferHistoryNotFound",
+    "Handler_Error_EmptySubject",
+    "Handler_Error_LocksNull",
+    "Handler_Error_NotTryLock",
+    "Handler_Error_Locked",
+    "Enum_Operation_TransferRigths",
+    "History_TransferRightsComment",
+    "Handler_Complite_Subject",
+    "Dialog_CaseTransferHistoryError"
+  ],
+  "ServerAssemblyName": "finex.TransferRights.Server",
+  "ServerNamespace": "finex.TransferRights.Server",
+  "SharedAssemblyName": "finex.TransferRights.Shared",
+  "SharedNamespace": "finex.TransferRights.Shared",
+  "SpecialFolders": [],
+  "Version": "0.0.1.2",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 6
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}

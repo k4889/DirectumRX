@@ -1,0 +1,69 @@
+{
+  "$type": "Sungero.Metadata.ReportMetadata, Sungero.Reporting.Shared",
+  "NameGuid": "b8893d0e-da9c-4772-8e88-8c9936f1be2b",
+  "Name": "UsingRecording",
+  "AssociatedGuid": "9377af4f-686b-4fed-ab18-1897d9e1e115",
+  "BaseGuid": "cef9a810-3f30-4eca-9fe3-30992af0b818",
+  "DataSources": [],
+  "DefaultExportFormat": "Pdf",
+  "ExportFormats": [
+    "Pdf"
+  ],
+  "HandledEvents": [
+    "BeforeExecuteServer",
+    "AfterExecuteServer"
+  ],
+  "IconResourcesKeys": [],
+  "Overridden": [
+    "PublicConstants",
+    "PublicStructures",
+    "HandledEvents",
+    "Parameters"
+  ],
+  "Parameters": [
+    {
+      "NameGuid": "484a406f-fd49-44f5-b2f0-a82c6e5b3dfd",
+      "Name": "TempReportTableName",
+      "InternalDataTypeName": "System.String",
+      "IsRequired": true
+    },
+    {
+      "NameGuid": "372c3b06-dae1-4176-9443-c116349cc64f",
+      "Name": "TableName",
+      "InternalDataTypeName": "System.String"
+    },
+    {
+      "NameGuid": "c22db4df-dc6e-4546-a60b-c1cf1e1088fb",
+      "Name": "EntityDirID",
+      "InternalDataTypeName": "System.Int32",
+      "IsRequired": true,
+      "IsSimpleDataType": true
+    },
+    {
+      "NameGuid": "5ba3e626-1611-423f-a364-6e9c38eeb66e",
+      "Name": "ObjectName",
+      "InternalDataTypeName": "System.String"
+    },
+    {
+      "NameGuid": "1a684c9b-312f-4db1-ba35-e12d298dd320",
+      "Name": "AdditionalColumnName",
+      "InternalDataTypeName": "System.String",
+      "IsCollection": true
+    },
+    {
+      "NameGuid": "df095426-0eff-42ab-85aa-bb21f7dd58c3",
+      "Name": "FindAllParams",
+      "InternalDataTypeName": "System.Boolean",
+      "IsRequired": true,
+      "IsSimpleDataType": true
+    },
+    {
+      "NameGuid": "f89e95f4-0cd1-4360-a64c-0867a34f3fd7",
+      "Name": "ReportSessionId",
+      "InternalDataTypeName": "System.String"
+    }
+  ],
+  "PublicStructures": [],
+  "ResourcesKeys": [],
+  "Versions": []
+}
