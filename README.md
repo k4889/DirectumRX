@@ -19,7 +19,7 @@
 Полезные материалы: [Настройка GIT в DirectumRX под использование хостинга проектов Bitbucket (GitHub)](https://club.directum.ru/post/223210)
 
 ## Порядок установки
-Для работы требуется установленный Sungero Development studio версии 3.6 и выше.
+Для работы требуется установленный Directum Development studio версии 3.6 и выше.
 
 ### Установка для ознакомления
 1. Склонировать репозиторий Settings в папку (например C:\WorkFolder).
@@ -28,7 +28,7 @@
 <block name="REPOSITORIES">
   <repository folderName="Base" solutionType="Base" url="<адрес локального репозитория>" />
   <repository folderName="Work" solutionType="Work" url="<адрес локального репозитория>" />
-  <repository folderName="<Папка из п.1>" solutionType="Work" url="https://github.com/DirectumCompany/Settings" />
+  <repository folderName="<Папка из п.1>" solutionType="Work" url="https://github.com/k4889/Settings" />
 </block>
 ```
 
@@ -59,7 +59,7 @@
 <block name="REPOSITORIES">
   <repository folderName="Base" solutionType="Base" url="" /> 
   <repository folderName="<Папка из п.1>" solutionType="Base" url="<Адрес репозитория gitHub>" />
-  <repository folderName="<Папка для рабочего слоя>" solutionType="Work" url="https://github.com/DirectumCompany/Settings" />
+  <repository folderName="<Папка для рабочего слоя>" solutionType="Work" url="https://github.com/k4889/Settings" />
 </block>
 ```
 
