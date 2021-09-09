@@ -21,14 +21,6 @@
       },
       {
         "$type": "Sungero.Metadata.CoverFunctionActionMetadata, Sungero.Metadata",
-        "NameGuid": "2f8dcc17-303f-4ad5-bda4-baf8069f91d7",
-        "Name": "RunTransferRights",
-        "FunctionName": "TransferRights",
-        "GroupId": "d7fa6d4f-d9d1-4118-b390-7df73ce801b5",
-        "IsVisible": false
-      },
-      {
-        "$type": "Sungero.Metadata.CoverFunctionActionMetadata, Sungero.Metadata",
         "NameGuid": "4f014989-45bc-4248-981a-80ff52135e48",
         "Name": "MailLogs",
         "FunctionName": "OpenMailLogs",
@@ -63,18 +55,11 @@
         "PreviousItemGuid": "0221cb42-eb67-4361-9523-4cf1e497206a"
       },
       {
-        "NameGuid": "d7fa6d4f-d9d1-4118-b390-7df73ce801b5",
-        "Name": "TransferRights",
-        "BackgroundPosition": "Stretch",
-        "IconName": "GroupIconTransferRights_d7fa6d4fd9d14118b3907df73ce801b5.png",
-        "PreviousItemGuid": "d01fc680-7c86-465e-a4bb-1f836fd8f8f3"
-      },
-      {
         "NameGuid": "778ed90e-edde-44f1-9c68-efddaaca7070",
         "Name": "MailAdapter",
         "BackgroundPosition": "Stretch",
         "IconName": "GroupIconMailAdapter_778ed90eedde44f19c68efddaaca7070.png",
-        "PreviousItemGuid": "d7fa6d4f-d9d1-4118-b390-7df73ce801b5"
+        "PreviousItemGuid": "d01fc680-7c86-465e-a4bb-1f836fd8f8f3"
       }
     ],
     "Header": {

@@ -141,13 +141,4 @@
   <data name="DisplayName" xml:space="preserve">
     <value>Дополнительные настройки</value>
   </data>
-  <data name="CoverGroup_TransferRights" xml:space="preserve">
-    <value>Передача дел</value>
-  </data>
-  <data name="CoverAction_RunTransferRights" xml:space="preserve">
-    <value>Передать дела по задачам и заданиям</value>
-  </data>
-  <data name="CoverDescription_RunTransferRights" xml:space="preserve">
-    <value>Открывает диалог для передачи дел по задачам и заданиям, включая права на вложенные документы</value>
-  </data>
 </root>

@@ -153,13 +153,4 @@
   <data name="CoverDescription_MailLogs" xml:space="preserve">
     <value>Открыть журнал отправки Email сообщений.</value>
   </data>
-  <data name="CoverGroup_TransferRights" xml:space="preserve">
-    <value>Work transmission</value>
-  </data>
-  <data name="CoverAction_RunTransferRights" xml:space="preserve">
-    <value>Transfer cases by tasks and assignments</value>
-  </data>
-  <data name="CoverDescription_RunTransferRights" xml:space="preserve">
-    <value>Opens a dialog for transferring cases by tasks and assignments, including the rights to attached documents</value>
-  </data>
 </root>

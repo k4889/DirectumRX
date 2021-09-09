@@ -8,14 +8,6 @@ namespace finex.AdditionalSettingsUI.Client
 {
   public class ModuleFunctions
   {
-
-    /// <summary>
-    /// Передать дела по задачам и заданиям
-    /// </summary>
-    public virtual void TransferRights()
-    {
-      finex.TransferRights.PublicFunctions.Module.TransferRightsDialog();
-    }
     
     /// <summary>
     /// Открыть справочник констант
