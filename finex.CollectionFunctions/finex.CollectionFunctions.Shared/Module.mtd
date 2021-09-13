@@ -1200,8 +1200,7 @@
         }
       ],
       "Placement": "Shared",
-      "ReturnType": "global::System.String[]",
-      "ReturnTypeFullName": "System.String"
+      "ReturnType": "System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>"
     },
     {
       "Name": "NumberInWords",

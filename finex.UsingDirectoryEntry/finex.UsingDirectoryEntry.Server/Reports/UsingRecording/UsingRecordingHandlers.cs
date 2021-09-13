@@ -57,7 +57,7 @@ namespace finex.UsingDirectoryEntry
 			// Перебераем все полученные таблицы
 			foreach (var tableName in tablesNames)
 			{
-				var tableList = new List<string>();
+			  var columnsNames = new Dictionary<string, string>();
 				
 				// Получим имена полей в таблице, которые соответствуют текущей сущности (Документы, Справочники)
 				using (var command = SQL.GetCurrentConnection().CreateCommand())
@@ -74,11 +74,7 @@ namespace finex.UsingDirectoryEntry
 					{
 						var reader = command.ExecuteReader();
 						while (reader.Read())
-						{
-							var columnName = string.Format("{0}", reader.GetValue(0).ToString());
-							var columnTableName = string.Format("{0}", reader.GetValue(1).ToString());
-							tableList.Add(string.Format("{0}|{1}", columnName, columnTableName));
-						}
+							columnsNames.Add(tableName, reader.GetValue(0).ToString());
 					}
 					catch (Exception ex)
 					{
@@ -89,15 +85,14 @@ namespace finex.UsingDirectoryEntry
 				}
 				
 				// Запишем данные во временную таблицу
-				foreach (var data in tableList)
+				foreach (var data in columnsNames)
 				{
 					using (var commandNonQuery = SQL.GetCurrentConnection().CreateCommand())
 					{
-						var dataArray = data.Split('|');
 						var commandText = string.Format(Queries.UsingRecording.InsertEntityTableColumn,
 						                                tempReportTableName,
-						                                dataArray[1],
-						                                dataArray[0],
+						                                data.Key,
+						                                data.Value,
 						                                UsingRecording.EntityDirID,
 						                                UsingRecording.ReportSessionId);
 						commandNonQuery.CommandText = commandText;
@@ -114,9 +109,6 @@ namespace finex.UsingDirectoryEntry
 						}
 					}
 				}
-				
-				// Очистим лист, на всякий случай
-				tableList.Clear();
 			}
 		}
 	}

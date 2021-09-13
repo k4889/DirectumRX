@@ -767,13 +767,13 @@ namespace finex.CollectionFunctions.Server
                                                                                 Sungero.Core.SignatureType signatureType,
                                                                                 Sungero.Company.IEmployee employee)
     {
-      var structure = Sungero.Docflow.Structures.Module.ByteArray.Create();
       var signatures = Signatures.Get(version).Where(s => s.SignatureType == signatureType && s.IsExternal != true);
       
       var signature = signatures.FirstOrDefault();
       if (employee != null)
         signature = signatures.Where(s => Equals(s.Signatory, employee)).FirstOrDefault();
       
+      var structure = Sungero.Docflow.Structures.Module.ByteArray.Create();
       if (signature != null)
         structure.Bytes = ((Sungero.Domain.Shared.IInternalSignature)signature).GetDataSignature();
       
@@ -856,26 +856,24 @@ namespace finex.CollectionFunctions.Server
                                                  List<Sungero.Core.SignatureType> signatureTypes,
                                                  bool isCertificate)
     {
-      var versionNum = -1;
-      
       if (document == null || user == null || !signatureTypes.Any())
-        return versionNum;
+        return -1;
       
-      foreach (var version in document.Versions)
-      {
-        if (isCertificate)
-        {
-          if (Signatures.Get(version).Where(s => s.IsExternal != true && Equals(s.Signatory, user) && s.SignCertificate != null && signatureTypes.Contains(s.SignatureType)).Any())
-            versionNum = version.Number.Value;
-        }
-        else
-        {
-          if (Signatures.Get(version).Where(s => s.IsExternal != true && Equals(s.Signatory, user) && signatureTypes.Contains(s.SignatureType)).Any())
-            versionNum = version.Number.Value;
-        }
-      }
+      var signatures = document.Versions
+        .SelectMany(v => Signatures.Get(v))
+        .Where(s => s.IsExternal != true)
+        .Where(s => Equals(s.Signatory, user))
+        .Where(s => signatureTypes.Contains(s.SignatureType));
       
-      return versionNum;
+      if (isCertificate)
+        signatures = signatures.Where(s => s.SignCertificate != null);
+      
+      var version = signatures
+        .Select(s => s.Entity)
+        .Cast<Sungero.Content.IElectronicDocumentVersions>()
+        .FirstOrDefault();
+      
+      return version != null ? version.Number.Value : -1;
     }
     
     /// <summary>
@@ -929,32 +927,31 @@ namespace finex.CollectionFunctions.Server
       var versionNum = -1;
       
       if (document == null || !users.Any() || !signatureTypes.Any())
-        return versionNum;
+        return -1;
       
       var usersIds = users.Select(u => u.Id).ToList();
       
-      var versions = document.Versions.ToList();;
+      var versions = document.Versions.ToList();
       if (isPdf)
       {
         var pdfExtension = Sungero.Docflow.PublicConstants.OfficialDocument.PdfExtension.ToLower();
         versions = versions.Where(v => v.AssociatedApplication.Extension.ToLower() == pdfExtension).ToList();
       }
       
-      foreach (var version in versions)
-      {
-        if (isCertificate)
-        {
-          if (Signatures.Get(version).Where(s => s.IsExternal != true && usersIds.Contains(s.Signatory.Id) && s.SignCertificate != null && signatureTypes.Contains(s.SignatureType)).Any())
-            versionNum = version.Number.Value;
-        }
-        else
-        {
-          if (Signatures.Get(version).Where(s => s.IsExternal != true && usersIds.Contains(s.Signatory.Id) && signatureTypes.Contains(s.SignatureType)).Any())
-            versionNum = version.Number.Value;
-        }
-      }
+      var signatures = versions
+        .SelectMany(v => Signatures.Get(v))
+        .Where(s => s.IsExternal != true)
+        .Where(s => usersIds.Contains(s.Signatory.Id))
+        .Where(s => signatureTypes.Contains(s.SignatureType));
       
-      return versionNum;
+      if (isCertificate)
+        signatures = signatures.Where(s => s.SignCertificate != null);
+      
+      var version = signatures
+        .Select(s => s.Entity)
+        .Cast<Sungero.Content.IElectronicDocumentVersions>()
+        .FirstOrDefault();
+      return version != null ? version.Number.Value : -1;
     }
     
     /// <summary>
@@ -2137,6 +2134,6 @@ namespace finex.CollectionFunctions.Server
     }
 
     #endregion
-    
+
   }
 }

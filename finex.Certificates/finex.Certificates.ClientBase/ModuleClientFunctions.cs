@@ -29,23 +29,21 @@ namespace finex.Certificates.Client
 				fakeControl.IsVisible = false;
 				
 				var link = dialog.AddHyperlink(Resources.LinkTitle);
-				link.SetOnExecute(() => {
-				                  	activeCertificates.ShowModal();
-				                  });
+				link.SetOnExecute(activeCertificates.ShowModal);
 				
-				var button_Add = dialog.Buttons.AddCustom(Resources.ButtonAdd);
-				var button_Replace = dialog.Buttons.AddCustom(Resources.ButtonReplace);
-				var button_Cancel = dialog.Buttons.AddCustom(Resources.ButtonCancel);
+				var buttonAdd = dialog.Buttons.AddCustom(Resources.ButtonAdd);
+				var buttonReplace = dialog.Buttons.AddCustom(Resources.ButtonReplace);
+				var buttonCancel = dialog.Buttons.AddCustom(Resources.ButtonCancel);
 				
-				dialog.Buttons.Default = button_Replace;
+				dialog.Buttons.Default = buttonReplace;
 				
 				dialog.SetOnButtonClick(
 					(b) =>
 					{
-						if (b.Button == button_Add)
+						if (b.Button == buttonAdd)
 							load = true;
 						
-						if (b.Button == button_Replace)
+						if (b.Button == buttonReplace)
 						{
 							closeCertificate = activeCertificates.ShowSelect();
 							if (closeCertificate == null)

@@ -6,6 +6,7 @@ using Sungero.CoreEntities;
 
 namespace finex.CollectionFunctions.Structures.Module
 {
+  
 	/// <summary>
 	/// Файл
 	/// </summary>
@@ -96,5 +97,5 @@ namespace finex.CollectionFunctions.Structures.Module
 		/// </summary>
 		public DateTime LastActivity { get; set; }
 	}
-	
+
 }

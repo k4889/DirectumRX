@@ -31,7 +31,7 @@ namespace finex.Certificates.Server
 			return Sungero.CoreEntities.Certificates.GetAll()
 				.Where(c => Equals(c.Owner, Sungero.CoreEntities.Users.Current))
 				.Where(c => c.Enabled == true)
-				.Where(c => (!c.NotAfter.HasValue || (c.NotAfter.HasValue && c.NotAfter >= Calendar.Today)))
+			  .Where(c => (!c.NotAfter.HasValue || c.NotAfter >= Calendar.Today))
 				.ToList();
 		}
 		
@@ -55,7 +55,7 @@ namespace finex.Certificates.Server
 			return Sungero.CoreEntities.Certificates.GetAll()
 				.Where(c => Equals(c.Owner, Sungero.CoreEntities.Users.Current))
 				.Where(c => c.Enabled == true)
-				.Where(c => (!c.NotAfter.HasValue || (c.NotAfter.HasValue && c.NotAfter > beginingDate)))
+				.Where(c => (!c.NotAfter.HasValue || c.NotAfter > beginingDate))
 				.ToList();
 		}
 		

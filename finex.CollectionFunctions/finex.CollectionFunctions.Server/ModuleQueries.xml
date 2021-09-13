@@ -4,12 +4,12 @@
     <default><![CDATA[DROP VIEW IF EXISTS {0}]]></default>
   </query>
   <query key="CheckTable">
-    <mssql><![CDATA[SELECT 
+    <default><![CDATA[SELECT 
 	Count(*) 
 FROM 
 	INFORMATION_SCHEMA.TABLES 
 WHERE 
-	TABLE_NAME = '{0}']]></mssql>
+	TABLE_NAME = '{0}']]></default>
   </query>
   <query key="SelectSubordinateDepartments">
     <mssql><![CDATA[WITH departments (Id)
@@ -127,7 +127,7 @@ FROM
 WHERE 
 	Id is not null]]></postgres>
   </query>
-  <query key="AlterTable">
+  <query key="AlterTableSQL">
     <mssql><![CDATA[IF COL_LENGTH('{0}', '{1}') IS NULL 
 	ALTER TABLE {0} ADD {1} {2} {3}]]></mssql>
   </query>
