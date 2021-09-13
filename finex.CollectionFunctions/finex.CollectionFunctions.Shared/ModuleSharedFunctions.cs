@@ -25,8 +25,13 @@ namespace finex.CollectionFunctions.Shared
 				isCapitalFirstLetter = true;
 			
 			int val;
+			
+			//Mishin не совсем правильно так, а если культура переключится на английскую и будет . вместо ,?
+			//Лушче так var sumArray = new []{}
+			//var sumArray = new []{sum / 1, sum % 1};
 			var sumArray = sum.ToString().Split(',');
-
+			 
+			//Mishin повторное использование переменной sumArray дя других целей
 			if (int.TryParse(sumArray[0], out val))
 			{
 			  sumArray[0] = sum < 0 ? string.Format("минус {0}", NumberInWords(val, isCapitalFirstLetter)).Trim() : NumberInWords(val, isCapitalFirstLetter).Trim();
@@ -36,6 +41,9 @@ namespace finex.CollectionFunctions.Shared
 				sumArray[1] = NumberInWords(val, false).Trim();
 
 			return sumArray;
+
+
+			
 		}
 		
 		/// <summary>
@@ -51,7 +59,7 @@ namespace finex.CollectionFunctions.Shared
 			
 			if (!isCapitalFirstLetter.HasValue)
 				isCapitalFirstLetter = true;
-			
+			//Mishin есть функция Math.Abs, лучше ее использовать
 			if (sum < 0)
 			{
 				sum = -sum;

@@ -787,6 +787,7 @@ namespace finex.CollectionFunctions.Server
 		                                                                            Sungero.Core.SignatureType signatureType,
 		                                                                            Sungero.Company.IEmployee employee)
 		{
+			//Mishin перенести бы var structure ближе к использованию
 			var structure = Sungero.Docflow.Structures.Module.ByteArray.Create();
 			var signatures = Signatures.Get(version).Where(s => s.SignatureType == signatureType && s.IsExternal != true);
 			
@@ -846,6 +847,8 @@ namespace finex.CollectionFunctions.Server
 		                                             List<string> signatureTypesString,
 		                                             bool isCertificate)
 		{
+			//Mishin почему signatureTypesString List<string>, а не List<Enumeration?>?
+			
 			var signatureTypes = new List<SignatureType>();
 			foreach (var typesString in signatureTypesString)
 			{
@@ -876,7 +879,23 @@ namespace finex.CollectionFunctions.Server
 		                                             List<Sungero.Core.SignatureType> signatureTypes,
 		                                             bool isCertificate)
 		{
-			var versionNum = -1;
+			//Mishin можно переписать на
+//			if (document == null || user == null || !signatureTypes.Any())
+//				return -1;
+//			var signatures = document.Versions
+//				.SelectMany(v => Signatures.Get(v))
+//				.Where(s => s.IsExternal != true)
+//				.Where(s => Equals(s.Signatory, user))
+//				.Where(s => signatureTypes.Contains(s.SignatureType));
+//			if (isCertificate)
+//				signatures = signatures.Where(s => s.SignCertificate != null);
+//			
+//			var version = signatures
+//				.Select(s => s.Entity)
+//				.Cast<Sungero.Content.IElectronicDocumentVersions>()
+//				.FirstOrDefault();
+//			return version != null ? version.Number : -1;
+			
 			
 			if (document == null || user == null || !signatureTypes.Any())
 				return versionNum;
@@ -946,6 +965,7 @@ namespace finex.CollectionFunctions.Server
 		                                             bool isCertificate,
 		                                             bool isPdf)
 		{
+			//Mishin по-идее можно обеъеденить с GetLastSignedVersionNumber
 			var versionNum = -1;
 			
 			if (document == null || !users.Any() || !signatureTypes.Any())
@@ -1460,6 +1480,8 @@ namespace finex.CollectionFunctions.Server
 			TextFragment textFragment = new TextFragment();
 			textFragment.Position.XIndent = 0;
 			textFragment.Position.YIndent = page.Rect.Height;
+		
+				
 			foreach (TextFragment textFragment1 in textFragmentAbsorber.TextFragments)
 			{
 				if (textFragment1.Position.YIndent >= textFragment.Position.YIndent && (textFragment1.Position.YIndent != textFragment.Position.YIndent || textFragment1.Position.XIndent <= textFragment.Position.XIndent))
@@ -1516,6 +1538,7 @@ namespace finex.CollectionFunctions.Server
 		private static Aspose.Pdf.HorizontalAlignment GetHorizontalAlignment(int horizontalAlignment)
 		{
 			Aspose.Pdf.HorizontalAlignment alignment;
+			//Mishin лучше использовать массив вместо case
 			switch (horizontalAlignment)
 			{
 				case 0:
@@ -2088,6 +2111,7 @@ namespace finex.CollectionFunctions.Server
 						foreach (var email in cc)
 							mail.CC.Add(email);
 						
+						//Mishin высчитвание приоритета можно вынести в отдельную функцию
 						if (string.IsNullOrEmpty(priority))
 							mail.Priority = System.Net.Mail.MailPriority.Normal;
 						else
