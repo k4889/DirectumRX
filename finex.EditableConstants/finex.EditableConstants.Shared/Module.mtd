@@ -33,7 +33,7 @@
     {
       "Id": "92491aa6-c4df-4f46-a807-ebdd337bda74",
       "MaxVersion": "",
-      "MinVersion": "1.0.0.0"
+      "MinVersion": "1.1.0.0"
     }
   ],
   "ExplorerTreeOrder": [
@@ -91,38 +91,6 @@
           "Name": "constantValue",
           "ParameterType": "global::System.String",
           "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "note",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "groupName",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        }
-      ],
-      "ReturnType": "void",
-      "ReturnTypeFullName": "System.Void"
-    },
-    {
-      "Name": "CreateConstants",
-      "Parameters": [
-        {
-          "Name": "name",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "constantValue",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "isText",
-          "ParameterType": "global::System.Boolean",
-          "ParameterTypeFullName": "System.Boolean"
         },
         {
           "Name": "note",
@@ -813,39 +781,6 @@
       "ReturnTypeFullName": "System.String"
     },
     {
-      "Name": "GetValueTextByName",
-      "IsRemote": true,
-      "Parameters": [
-        {
-          "Name": "name",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        }
-      ],
-      "Placement": "Shared",
-      "ReturnType": "global::System.String",
-      "ReturnTypeFullName": "System.String"
-    },
-    {
-      "Name": "GetValueTextByName",
-      "IsRemote": true,
-      "Parameters": [
-        {
-          "Name": "name",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "genException",
-          "ParameterType": "global::System.Boolean",
-          "ParameterTypeFullName": "System.Boolean"
-        }
-      ],
-      "Placement": "Shared",
-      "ReturnType": "global::System.String",
-      "ReturnTypeFullName": "System.String"
-    },
-    {
       "Name": "SendNoticeAndCreateExeption",
       "IsRemote": true,
       "Parameters": [
@@ -1318,49 +1253,6 @@
       "Placement": "Shared",
       "ReturnType": "global::System.Boolean",
       "ReturnTypeFullName": "System.Boolean"
-    },
-    {
-      "Name": "SetValueTextByName",
-      "IsRemote": true,
-      "Parameters": [
-        {
-          "Name": "name",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "constValue",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        }
-      ],
-      "Placement": "Shared",
-      "ReturnType": "global::System.Boolean",
-      "ReturnTypeFullName": "System.Boolean"
-    },
-    {
-      "Name": "SetValueTextByName",
-      "IsRemote": true,
-      "Parameters": [
-        {
-          "Name": "name",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "constValue",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "genException",
-          "ParameterType": "global::System.Boolean",
-          "ParameterTypeFullName": "System.Boolean"
-        }
-      ],
-      "Placement": "Shared",
-      "ReturnType": "global::System.Boolean",
-      "ReturnTypeFullName": "System.Boolean"
     }
   ],
   "PublicStructures": [
@@ -1407,7 +1299,7 @@
   "SharedAssemblyName": "finex.EditableConstants.Shared",
   "SharedNamespace": "finex.EditableConstants.Shared",
   "SpecialFolders": [],
-  "Version": "1.0.1.22",
+  "Version": "0.0.2.6",
   "Widgets": [],
   "Versions": [
     {

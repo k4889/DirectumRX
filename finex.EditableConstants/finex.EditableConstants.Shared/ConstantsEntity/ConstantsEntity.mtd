@@ -263,21 +263,16 @@
         },
         {
           "$type": "Sungero.Metadata.ControlMetadata, Sungero.Metadata",
-          "NameGuid": "0e084300-36c7-4a93-8d76-246fd2a60c71",
+          "NameGuid": "57170a1c-2b0f-45ad-b21b-b4ab615abee0",
           "Name": "ValueText",
           "ColumnNumber": 0,
           "ColumnSpan": 2,
           "DataBinderTypeName": "Sungero.Presentation.CommonDataBinders.TextEditorToTextBinder",
           "ParentGuid": "90d1a2b6-2c49-47e0-8cd7-a06ed6a4afa4",
-          "PropertyGuid": "87c647b5-fac5-4349-bf0a-0308959ef899",
+          "PropertyGuid": "ad68a5d8-2360-4a46-ae67-48acbf1c7c79",
           "RowNumber": 10,
           "RowSpan": 1,
-          "Settings": [
-            {
-              "Name": "Height",
-              "Value": 300
-            }
-          ]
+          "Settings": []
         }
       ]
     }
@@ -419,11 +414,6 @@
           "NameGuid": "8630ac1f-6a29-42ee-9c90-c18c1dfa053b",
           "Name": "ValBase64",
           "Code": "ValBase64"
-        },
-        {
-          "NameGuid": "e3c6c4b6-dcb4-4b02-900b-1277b22c04fd",
-          "Name": "ValText",
-          "Code": "ValText"
         }
       ],
       "IsEnabled": false,
@@ -566,15 +556,9 @@
     },
     {
       "$type": "Sungero.Metadata.TextPropertyMetadata, Sungero.Metadata",
-      "NameGuid": "87c647b5-fac5-4349-bf0a-0308959ef899",
+      "NameGuid": "ad68a5d8-2360-4a46-ae67-48acbf1c7c79",
       "Name": "ValueText",
-      "CanBeSearch": false,
       "Code": "ValueText",
-      "HandledEvents": [
-        "ChangedShared"
-      ],
-      "IsShowedInList": false,
-      "IsVisibility": false,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.StringEditorToTextBinder",
       "PreviousPropertyGuid": "49c1ee67-3812-41f8-aa22-64034753e3de"
     }

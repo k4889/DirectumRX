@@ -57,7 +57,7 @@
   "SharedAssemblyName": "finex.ClearLogsFromRX.Shared",
   "SharedNamespace": "finex.ClearLogsFromRX.Shared",
   "SpecialFolders": [],
-  "Version": "1.0.1.22",
+  "Version": "0.0.2.6",
   "Widgets": [],
   "Versions": [
     {

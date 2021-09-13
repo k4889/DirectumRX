@@ -15,6 +15,7 @@ namespace finex.Certificates.Client
 		[Public]
 		public virtual void ShowImportCertificateDialog()
 		{
+	
 			bool load = true;
 			var closeCertificate = Sungero.CoreEntities.Certificates.Null;
 			
@@ -29,15 +30,20 @@ namespace finex.Certificates.Client
 				fakeControl.IsVisible = false;
 				
 				var link = dialog.AddHyperlink(Resources.LinkTitle);
+				//Mishin можно так 
+				//link.SetOnExecute(activeCertificates.ShowModal);
+				
 				link.SetOnExecute(() => {
 				                  	activeCertificates.ShowModal();
 				                  });
 				
+				//Mishin использование _ в названия переменных не в стиле c#
 				var button_Add = dialog.Buttons.AddCustom(Resources.ButtonAdd);
 				var button_Replace = dialog.Buttons.AddCustom(Resources.ButtonReplace);
 				var button_Cancel = dialog.Buttons.AddCustom(Resources.ButtonCancel);
 				
 				dialog.Buttons.Default = button_Replace;
+				
 				
 				dialog.SetOnButtonClick(
 					(b) =>

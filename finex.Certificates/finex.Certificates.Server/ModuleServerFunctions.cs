@@ -27,10 +27,12 @@ namespace finex.Certificates.Server
 		/// <returns>Список сертификатов</returns>
 		[Remote(IsPure = true), Public]
 		public List<Sungero.CoreEntities.ICertificate> GetActiveCertificate()
-		{			
+		{
 			return Sungero.CoreEntities.Certificates.GetAll()
 				.Where(c => Equals(c.Owner, Sungero.CoreEntities.Users.Current))
 				.Where(c => c.Enabled == true)
+				//Mishin можно заменить на
+				//.Where(c => !c.NotAfter.HasValue || c.NotAfter >= Calendar.Today) - работает аналогично
 				.Where(c => (!c.NotAfter.HasValue || (c.NotAfter.HasValue && c.NotAfter >= Calendar.Today)))
 				.ToList();
 		}
@@ -55,6 +57,8 @@ namespace finex.Certificates.Server
 			return Sungero.CoreEntities.Certificates.GetAll()
 				.Where(c => Equals(c.Owner, Sungero.CoreEntities.Users.Current))
 				.Where(c => c.Enabled == true)
+				//Mishin можно заменить на
+				//.Where(c => !c.NotAfter.HasValue || c.NotAfter > beginingDate) - работает аналогично
 				.Where(c => (!c.NotAfter.HasValue || (c.NotAfter.HasValue && c.NotAfter > beginingDate)))
 				.ToList();
 		}
@@ -98,6 +102,7 @@ namespace finex.Certificates.Server
 			
 			System.Security.Cryptography.X509Certificates.X509Certificate2 x509Certificate2;
 			
+			//Mishin здесь бы наверное подошел тренарник
 			if (string.IsNullOrEmpty(password))
 				x509Certificate2 = new System.Security.Cryptography.X509Certificates.X509Certificate2(byteArray.Bytes);
 			else
