@@ -134,7 +134,7 @@ namespace finex.CollectionFunctions.Server
 		/// Выполнить SQL-запрос.
 		/// </summary>
 		/// <param name="commandText">Форматируемая строка запроса.</param>
-		/// <returns>Результат запроса.</returns>
+		/// <returns>Возвращает первый столбец первой строки.</returns>
 		[Public]
 		public static string ExecuteScalarSQLCommand(string commandText)
 		{
