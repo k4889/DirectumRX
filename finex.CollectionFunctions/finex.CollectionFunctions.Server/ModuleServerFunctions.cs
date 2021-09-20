@@ -1999,6 +1999,9 @@ namespace finex.CollectionFunctions.Server
       if (recipient == null)
         return;
       
+      if (subject.Length > 250)
+        subject = subject.Substring(0, 250);
+      
       var task = Sungero.Workflow.SimpleTasks.CreateWithNotices(subject, recipient);
       task.ActiveText = text;
       
@@ -2101,7 +2104,10 @@ namespace finex.CollectionFunctions.Server
       {
         var departments = Sungero.Company.Departments.GetAll();
         foreach (var department in departments)
+        {
+          department.Name = department.Name;
           department.Save();
+        }
       }
       catch (Exception e)
       {
@@ -2122,7 +2128,10 @@ namespace finex.CollectionFunctions.Server
       {
         var employes = Sungero.Company.Employees.GetAll();
         foreach (var employee in employes)
+        {
+          employee.Name = employee.Name;
           employee.Save();
+        }
       }
       catch (Exception e)
       {
