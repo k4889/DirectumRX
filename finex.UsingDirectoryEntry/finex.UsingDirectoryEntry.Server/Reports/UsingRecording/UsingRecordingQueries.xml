@@ -174,7 +174,7 @@ BEGIN
 		ELSE
 	END CASE;	
 	
-	IF (@colID != '''NULL'', ' OR (@colNameOrSubj != '''NULL'', ' OR @objectType != ', ''NULL'''))
+	IF (colID != '''NULL'', ' OR (colNameOrSubj != '''NULL'', ' OR objectType != ', ''NULL'''))
 	THEN
 		execute 'INSERT INTO {0} 
 					SELECT 
