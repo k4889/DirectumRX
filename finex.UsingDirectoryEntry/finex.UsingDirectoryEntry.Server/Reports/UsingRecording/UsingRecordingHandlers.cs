@@ -57,7 +57,7 @@ namespace finex.UsingDirectoryEntry
 			// Перебераем все полученные таблицы
 			foreach (var tableName in tablesNames)
 			{
-			  var columnsNames = new Dictionary<string, string>();
+			  var columnsNames = new List<KeyValuePair<string, string>>();
 				
 				// Получим имена полей в таблице, которые соответствуют текущей сущности (Документы, Справочники)
 				using (var command = SQL.GetCurrentConnection().CreateCommand())
@@ -74,7 +74,7 @@ namespace finex.UsingDirectoryEntry
 					{
 						var reader = command.ExecuteReader();
 						while (reader.Read())
-							columnsNames.Add(tableName, reader.GetValue(0).ToString());
+							columnsNames.Add(new KeyValuePair<string, string>(tableName, reader.GetValue(0).ToString()));
 					}
 					catch (Exception ex)
 					{
