@@ -1041,6 +1041,25 @@
       "ReturnTypeFullName": "System.String"
     },
     {
+      "Name": "GetLockClientID",
+      "IsRemote": true,
+      "Parameters": [
+        {
+          "Name": "loginId",
+          "ParameterType": "global::System.Int32",
+          "ParameterTypeFullName": "System.Int32"
+        },
+        {
+          "Name": "entityId",
+          "ParameterType": "global::System.Int32",
+          "ParameterTypeFullName": "System.Int32"
+        }
+      ],
+      "Placement": "Shared",
+      "ReturnType": "global::System.String",
+      "ReturnTypeFullName": "System.String"
+    },
+    {
       "Name": "GetSignatureForMark",
       "Parameters": [
         {

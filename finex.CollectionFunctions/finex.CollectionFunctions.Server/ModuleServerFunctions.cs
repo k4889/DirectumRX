@@ -137,6 +137,19 @@ namespace finex.CollectionFunctions.Server
       return PublicInitializationFunctions.Module.ExecuteScalarSQLCommand(query);
     }
     
+    /// <summary>
+    /// Получить идентификатор клиента заблокировавшего объект
+    /// </summary>
+    /// <param name="loginId">ИД учетной записи установившей блокировку</param>
+    /// <param name="entityId">ИД заблокированного объекта</param>
+    /// <returns>Идентификатор клиента заблокировавшего объект</returns>
+    [Remote(IsPure = true), Public]
+    public string GetLockClientID(int loginId, int entityId)
+    {
+      var query = string.Format(Queries.Module.GetClientId, loginId, entityId);
+      return PublicInitializationFunctions.Module.ExecuteScalarSQLCommand(query);
+    }
+    
     #endregion
     
     

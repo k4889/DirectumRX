@@ -140,4 +140,12 @@ Where
 	Locks.Login = {0} AND
 	Locks.EntityId = {1}]]></default>
   </query>
+  <query key="GetClientId">
+    <default><![CDATA[Select
+	ClientId
+From Sungero_System_Locks
+Where
+	Login = {0} AND
+	EntityId = {1}]]></default>
+  </query>
 </queries>
