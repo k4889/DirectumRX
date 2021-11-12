@@ -31,6 +31,9 @@
       "MinVersion": ""
     }
   ],
+  "HandledEvents": [
+    "InitializingServer"
+  ],
   "IconResourcesKeys": [],
   "Importance": "Medium",
   "InterfaceAssemblyName": "Sungero.Domain.Interfaces",

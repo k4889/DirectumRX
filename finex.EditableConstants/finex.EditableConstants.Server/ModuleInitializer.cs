@@ -15,8 +15,6 @@ namespace finex.EditableConstants.Server
       InitializationLogger.Debug("Init: Старт инициализации модуля \"Константы\".");
       
       SetGrantRights();
-      
-      CreateEntitys();
     }
     
     
@@ -63,22 +61,6 @@ namespace finex.EditableConstants.Server
     
     
     #region Создание записей справочника "Константы"
-    
-    /// <summary>
-    /// Создание записей справочников
-    /// </summary>
-    public static void CreateEntitys()
-    {
-      #region NOT DELETE
-      //Создание группы констант
-      CreateGroup("Логирование", "Группа констант связанных с логирование в системе DirectumRX");
-      
-      //Создание констант
-      var listString = new List<string> {"C:\\inetpub\\logs"};
-      CreateConstants("ClearLogsPaths", listString, "Путь к лог файлам DirectumRX", "Логирование");
-      CreateConstants("LogsLifeTime", 10, "Время жизни логов (в днях)", "Логирование");
-      #endregion
-    }
     
     
     #region Создание групп констант
