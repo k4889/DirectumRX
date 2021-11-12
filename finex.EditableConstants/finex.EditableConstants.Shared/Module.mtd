@@ -1401,7 +1401,13 @@
   ],
   "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "ResourceInterfaceNamespace": "finex.EditableConstants",
-  "ResourcesKeys": [],
+  "ResourcesKeys": [
+    "ConstantNotFind",
+    "ConstantNotName",
+    "ErrorMessage",
+    "SubjectError",
+    "TextError"
+  ],
   "ServerAssemblyName": "finex.EditableConstants.Server",
   "ServerNamespace": "finex.EditableConstants.Server",
   "SharedAssemblyName": "finex.EditableConstants.Shared",
