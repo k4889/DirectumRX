@@ -234,4 +234,10 @@
   <data name="Enum_TypeValue_ValText" xml:space="preserve">
     <value>Text</value>
   </data>
+  <data name="Property_ValueDate" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Enum_TypeValue_ValDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
 </root>

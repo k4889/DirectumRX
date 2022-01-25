@@ -484,6 +484,92 @@ namespace finex.EditableConstants.Server
     
     #endregion
     
+    #region Даты
+    
+    /// <summary>
+    /// Получить дату из константы.
+    /// </summary>
+    /// <param name="name">Имя константы.</param>
+    /// <returns>Значение константы, если константа не найдена, то null.</returns>
+    [Remote, Public]
+    public virtual DateTime? GetValueDateByName(string name)
+    {
+      return this.GetValueDateByName(name, true);
+    }
+    
+    /// <summary>
+    /// Получить дату из константы.
+    /// </summary>
+    /// <param name="name">Имя константы.</param>
+    /// <param name="genException">Генерировать исключения.</param>
+    /// <returns>Значение константы, если константа не найдена, то null.</returns>
+    [Remote, Public]
+    public virtual DateTime? GetValueDateByName(string name, bool genException)
+    {
+      string subjectError = Resources.SubjectError;
+      var typeValue = finex.EditableConstants.ConstantsEntity.TypeValue.ValDate;
+
+      var constantEntity = GetConstant(name, typeValue, genException);
+      if (constantEntity != null)
+      {
+        if (!constantEntity.ValueDate.HasValue)
+        {
+          string textError = Resources.TextErrorFormat(name);
+          SendNoticeAndCreateExeption(subjectError, textError, genException);
+        }
+        else
+          return constantEntity.ValueDate;
+      }
+      
+      return null;
+    }
+    
+    /// <summary>
+    /// Установить дату в константе.
+    /// </summary>
+    /// <param name="name">Имя константы.</param>
+    /// <param name="constValue">Новое значение константы.</param>
+    /// <returns>True - если значение установлено, иначе - False.</returns>
+    [Remote, Public]
+    public virtual bool SetValueDateByName(string name, DateTime constValue)
+    {
+      return this.SetValueDateByName(name, constValue, true);
+    }
+    
+    /// <summary>
+    /// Установить дату в константе.
+    /// </summary>
+    /// <param name="name">Имя константы.</param>
+    /// <param name="constValue">Новое значение константы.</param>
+    /// <param name="genException">Генерировать исключения.</param>
+    /// <returns>True - если значение установлено, иначе - False.</returns>
+    [Remote, Public]
+    public virtual bool SetValueDateByName(string name, DateTime constValue, bool genException)
+    {
+      string subjectError = Resources.SubjectError;
+      var typeValue = finex.EditableConstants.ConstantsEntity.TypeValue.ValDate;
+      
+      var constantEntity = GetConstant(name, typeValue, genException);
+      if (constantEntity != null)
+      {
+        try
+        {
+          constantEntity.ValueDate = constValue;
+          constantEntity.Save();
+          return true;
+        }
+        catch (Exception e)
+        {
+          string textError = Resources.ErrorMessageFormat(name, e.Message);
+          SendNoticeAndCreateExeption(subjectError, textError, genException);
+        }
+      }
+      
+      return false;
+    }
+    
+    #endregion
+    
     
     #region Список строковых значений
     

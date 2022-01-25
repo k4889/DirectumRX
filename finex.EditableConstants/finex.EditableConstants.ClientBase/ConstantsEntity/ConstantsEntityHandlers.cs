@@ -23,6 +23,8 @@ namespace finex.EditableConstants
       var typeBoolean = finex.EditableConstants.ConstantsEntity.TypeValue.ValBool;
       // Тип константы - текст
       var typeText = finex.EditableConstants.ConstantsEntity.TypeValue.ValText;
+      // Тип константы - дата
+      var typeDate = finex.EditableConstants.ConstantsEntity.TypeValue.ValDate;
       
       // Тип константы - список строк
       var typeListString = finex.EditableConstants.ConstantsEntity.TypeValue.ValListString;
@@ -72,6 +74,12 @@ namespace finex.EditableConstants
         properties.ValueText.IsVisible = true;
         properties.ValueText.IsRequired = true;
       }
+      
+      if (_obj.TypeValue == typeDate)
+      {
+        properties.ValueDate.IsVisible = true;
+        properties.ValueDate.IsRequired = true;
+      }      
       #endregion
       
       #region Диапазоны значений

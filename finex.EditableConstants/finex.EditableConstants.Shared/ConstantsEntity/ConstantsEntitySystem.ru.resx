@@ -225,4 +225,10 @@
   <data name="Enum_TypeValue_ValText" xml:space="preserve">
     <value>Текст</value>
   </data>
+  <data name="Property_ValueDate" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="Enum_TypeValue_ValDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
 </root>
