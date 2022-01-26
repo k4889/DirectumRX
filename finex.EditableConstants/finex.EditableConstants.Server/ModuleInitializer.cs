@@ -261,6 +261,27 @@ namespace finex.EditableConstants.Server
       }
     }
     
+    /// <summary>
+    /// Создание записи справочника Константы.
+    /// </summary>
+    /// <param name="name">Имя константы.</param>
+    /// <param name="constantValue">Значение константы.</param>
+    /// <param name="note">Примечание константы.</param>
+    /// <param name="name">Имя группы.</param>
+    [Public]
+    public static void CreateConstants(string name, DateTime constantValue, string note, string groupName)
+    {
+      // Тип константы - логическое
+      var typeValue = finex.EditableConstants.ConstantsEntity.TypeValue.ValDate;
+      
+      var constant = GetNewConstant(name, typeValue, note, groupName);
+      if (constant != null)
+      {
+        constant.ValueDate = constantValue;
+        constant.Save();
+      }
+    }
+    
     #endregion
     
     #region Диапазоны простых типов
