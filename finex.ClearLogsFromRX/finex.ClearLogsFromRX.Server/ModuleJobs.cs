@@ -4,7 +4,6 @@ using System.Linq;
 using Sungero.Core;
 using Sungero.CoreEntities;
 using System.IO;
-using System.Security.Principal;
 using System.Security.AccessControl;
 
 namespace finex.ClearLogsFromRX.Server
@@ -26,7 +25,6 @@ namespace finex.ClearLogsFromRX.Server
         lifeTime = 14;
 
       var checkDate = Calendar.Now.AddDays(lifeTime.Value * -1);
-      var currentUser = WindowsIdentity.GetCurrent();
       
       foreach (var folderPath in folderPaths.Where(f => !string.IsNullOrEmpty(f) && !string.IsNullOrWhiteSpace(f)))
       {
@@ -40,7 +38,7 @@ namespace finex.ClearLogsFromRX.Server
           }
           catch (Exception ex)
           {
-            Logger.ErrorFormat("ClearLogs: Ошибка при удалении лог файла (пользователь {0}): {1}", currentUser.Name, ex.Message);
+            Logger.ErrorFormat("ClearLogs: Ошибка при удалении лог файла: {0}", ex.Message);
           }
         }
       }

@@ -117,6 +117,77 @@
       "ReturnTypeFullName": "Sungero.Company.IDepartment, Sungero.Domain.Interfaces"
     },
     {
+      "Name": "CreateDocumentKind",
+      "Parameters": [
+        {
+          "Name": "name",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "shortName",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "code",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "numerationType",
+          "ParameterType": "global::Sungero.Core.Enumeration",
+          "ParameterTypeFullName": "Sungero.Core.Enumeration, Sungero.Domain.Shared"
+        },
+        {
+          "Name": "direction",
+          "ParameterType": "global::Sungero.Core.Enumeration",
+          "ParameterTypeFullName": "Sungero.Core.Enumeration, Sungero.Domain.Shared"
+        },
+        {
+          "Name": "autoFormattedName",
+          "ParameterType": "global::System.Boolean",
+          "ParameterTypeFullName": "System.Boolean"
+        },
+        {
+          "Name": "autoNumerable",
+          "ParameterType": "global::System.Boolean",
+          "ParameterTypeFullName": "System.Boolean"
+        },
+        {
+          "Name": "typeGuid",
+          "ParameterType": "global::System.Guid",
+          "ParameterTypeFullName": "System.Guid"
+        },
+        {
+          "Name": "actions",
+          "ParameterType": "Sungero.Domain.Shared.IActionInfo[]"
+        },
+        {
+          "Name": "projectAccounting",
+          "ParameterType": "global::System.Boolean",
+          "ParameterTypeFullName": "System.Boolean"
+        },
+        {
+          "Name": "grantRightsToProject",
+          "ParameterType": "global::System.Boolean",
+          "ParameterTypeFullName": "System.Boolean"
+        },
+        {
+          "Name": "entityId",
+          "ParameterType": "global::System.Guid",
+          "ParameterTypeFullName": "System.Guid"
+        },
+        {
+          "Name": "isDefault",
+          "ParameterType": "global::System.Boolean",
+          "ParameterTypeFullName": "System.Boolean"
+        }
+      ],
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
       "Name": "CreateJobTitle",
       "Parameters": [
         {
@@ -264,6 +335,11 @@
       "NameGuid": "a96be319-c621-4b96-9956-db08e1af62c3",
       "Name": "Office",
       "Scope": "Both"
+    },
+    {
+      "NameGuid": "bd5e84dd-7398-40b3-a206-0968a0ff2979",
+      "Name": "System",
+      "Scope": "Both"
     }
   ],
   "Overridden": [
@@ -287,6 +363,15 @@
       ],
       "TypeName": "System.String",
       "Value": "\"61b1c19f-26e2-49a5-b3d3-0d3618151e12\""
+    },
+    {
+      "Name": "DocumentKindGuid",
+      "ParentClasses": [
+        "Module",
+        "RecipientTypes"
+      ],
+      "TypeName": "System.String",
+      "Value": "\"14a59623-89a2-4ea8-b6e9-2ad4365f358c\""
     },
     {
       "Name": "EmployeeTypeGuid",
@@ -1583,6 +1668,7 @@
         },
         {
           "Name": "Content",
+          "IsArray": true,
           "TypeFullName": "global::System.Byte[]"
         }
       ],
@@ -1660,6 +1746,7 @@
         },
         {
           "Name": "Body",
+          "IsArray": true,
           "TypeFullName": "global::System.Byte[]"
         }
       ],
@@ -1701,7 +1788,7 @@
   "SharedAssemblyName": "finex.CollectionFunctions.Shared",
   "SharedNamespace": "finex.CollectionFunctions.Shared",
   "SpecialFolders": [],
-  "Version": "1.0.1.22",
+  "Version": "1.0.1.33",
   "Widgets": [],
   "Versions": [
     {

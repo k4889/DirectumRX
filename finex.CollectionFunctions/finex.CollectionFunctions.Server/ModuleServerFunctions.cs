@@ -10,7 +10,8 @@ using Sungero.Content.Shared;
 using System.IO;
 using Aspose.Pdf.Text;
 using PdfSharp.Pdf;
-using Sungero.AsposeExtensions;
+//using Sungero.AsposeExtensions;
+using System.IO.Packaging;
 
 namespace finex.CollectionFunctions.Server
 {
@@ -289,7 +290,7 @@ namespace finex.CollectionFunctions.Server
           }
         }
       }
-      
+     
       Logger.Debug(">>Import data: parsing excel file - complited!");
       
       return result;
@@ -937,8 +938,6 @@ namespace finex.CollectionFunctions.Server
                                                  bool isCertificate,
                                                  bool isPdf)
     {
-      var versionNum = -1;
-      
       if (document == null || !users.Any() || !signatureTypes.Any())
         return -1;
       
@@ -1424,7 +1423,7 @@ namespace finex.CollectionFunctions.Server
           }
 
         }
-        catch (PdfConvertException pdfConvertException)
+        catch (Sungero.AsposeExtensions.PdfConvertException pdfConvertException)
         {
           info.ErrorMessage = pdfConvertException.Message;
         }

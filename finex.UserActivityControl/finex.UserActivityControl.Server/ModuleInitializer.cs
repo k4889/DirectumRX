@@ -28,7 +28,7 @@ namespace finex.UserActivityControl.Server
 			finex.EditableConstants.PublicInitializationFunctions.Module.CreateGroup("Контроль пользователей", "Группа констант относящихся к подсистеме контроля активности пользователей в Directum RX.");
 			
 			//Создание констант
-			finex.EditableConstants.PublicInitializationFunctions.Module.CreateConstants("TimeOutInactivity", 480, "Таймаут бездействия в системе (в минутах)", "Контроль пользователей");
+			finex.EditableConstants.PublicInitializationFunctions.Module.CreateConstants("TimeOutInactivity", 1440, "Таймаут бездействия в системе (в минутах)", "Контроль пользователей");
 			//Создание констант
 			finex.EditableConstants.PublicInitializationFunctions.Module.CreateConstants("EnableMonitoring", false, "Включить сбор статистики по количеству работающих пользователей в системе", "Контроль пользователей");
 		}

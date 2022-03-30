@@ -31,9 +31,6 @@
       "MinVersion": ""
     }
   ],
-  "HandledEvents": [
-    "InitializingServer"
-  ],
   "IconResourcesKeys": [],
   "Importance": "Medium",
   "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
@@ -48,6 +45,13 @@
       "StartAt": "1753-01-01T07:00:00"
     }
   ],
+  "Libraries": [
+    {
+      "NameGuid": "3fd0c818-18ed-465b-bcaf-8e5a70034aba",
+      "Name": "Windows",
+      "Scope": "Server"
+    }
+  ],
   "Overridden": [
     "IsVisible"
   ],
@@ -60,7 +64,7 @@
   "SharedAssemblyName": "finex.ClearLogsFromRX.Shared",
   "SharedNamespace": "finex.ClearLogsFromRX.Shared",
   "SpecialFolders": [],
-  "Version": "1.0.1.22",
+  "Version": "1.0.1.33",
   "Widgets": [],
   "Versions": [
     {

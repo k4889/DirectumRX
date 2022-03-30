@@ -362,6 +362,63 @@ namespace finex.CollectionFunctions.Server
       return department;
     }
     
+    /// <summary>
+    /// Создать вид документа.
+    /// </summary>
+    /// <param name="name">Имя.</param>
+    /// <param name="shortName">Сокращенное имя.</param>
+    /// <param name="code">Код.</param>
+    /// <param name="numerationType">Нумерация.</param>
+    /// <param name="direction">Документопоток.</param>
+    /// <param name="autoFormattedName">Признак автоформирования имени.</param>
+    /// <param name="autoNumerable">Признак автонумерации.</param>
+    /// <param name="typeGuid">Доступный тип документа.</param>
+    /// <param name="actions">Действия отправки по умолчанию.</param>
+    /// <param name="projectAccounting">Признак ведения учета документа по проектам.</param>
+    /// <param name="grantRightsToProject">Выдавать права участникам проектов на экземпляры вида документа.</param>
+    /// <param name="entityId">ИД инициализации.</param>
+    /// <param name="isDefault">Признак вида документа по умолчанию.</param>
+    [Public]
+    public static void CreateDocumentKind(string name, string shortName, string code, Enumeration numerationType, Enumeration direction,
+                                     bool autoFormattedName, bool autoNumerable, Guid typeGuid, Sungero.Domain.Shared.IActionInfo[] actions,
+                                     bool projectAccounting, bool grantRightsToProject, Guid entityId, bool isDefault)
+    {
+      var externalLink = Sungero.Docflow.PublicFunctions.Module.GetExternalLink(Guid.Parse(Constants.Module.RecipientTypes.DocumentKindGuid), entityId);
+      
+      if (externalLink != null)
+        return;
+      
+      var type = typeGuid.ToString();
+      var documentType = Sungero.Docflow.DocumentTypes.GetAll(t => t.DocumentTypeGuid == type).FirstOrDefault();
+      
+      InitializationLogger.DebugFormat("Init: Create document kind {0}", name);
+      
+      var documentKind = Sungero.Docflow.DocumentKinds.Create();
+      documentKind.Name = name;
+      documentKind.ShortName = shortName;
+      documentKind.Code = code;
+      documentKind.DocumentFlow = direction;
+      documentKind.NumberingType = numerationType;
+      documentKind.GenerateDocumentName = autoFormattedName;
+      documentKind.AutoNumbering = autoNumerable;
+      documentKind.ProjectsAccounting = projectAccounting;
+      documentKind.GrantRightsToProject = grantRightsToProject;
+      documentKind.DocumentType = documentType;
+      documentKind.IsDefault = isDefault;
+      
+      // Перебиваем действия, если они были явно переданы.
+      if (actions != null && actions.Any())
+      {
+        documentKind.AvailableActions.Clear();
+        foreach (var action in actions)
+          documentKind.AvailableActions.AddNew().Action = Functions.Module.GetSendAction(action);
+      }
+
+      documentKind.Save();
+      
+      Sungero.Docflow.PublicFunctions.Module.CreateExternalLink(documentKind, entityId);
+    }
+    
     #endregion
     
   }

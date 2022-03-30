@@ -183,5 +183,31 @@ namespace finex.CollectionFunctions.Shared
     
     #endregion
   
+    
+    #region Функции инициализации
+    
+    /// <summary>
+    /// Получить GUID действия.
+    /// </summary>
+    /// <param name="action">Действие.</param>
+    /// <returns>Строка, содержащая GUID.</returns>
+    public static string GetActionGuid(Sungero.Domain.Shared.IActionInfo action)
+    {
+      var internalAction = action as Sungero.Domain.Shared.IInternalActionInfo;
+      return internalAction == null ? string.Empty : internalAction.NameGuid.ToString();
+    }
+		
+		/// <summary>
+    /// Получить действие по отправке документа.
+    /// </summary>
+    /// <param name="action">Информация о действии.</param>
+    /// <returns>Действие по отправке документа.</returns>
+    public static Sungero.Docflow.IDocumentSendAction GetSendAction(Sungero.Domain.Shared.IActionInfo action)
+    {
+      return Sungero.Docflow.DocumentSendActions.GetAllCached(a => a.ActionGuid == Functions.Module.GetActionGuid(action)).Single();
+    }
+    
+    #endregion
+    
   }
 }

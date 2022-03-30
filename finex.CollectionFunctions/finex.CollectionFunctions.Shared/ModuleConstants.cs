@@ -44,6 +44,12 @@ namespace finex.CollectionFunctions.Constants
       /// </summary>
       [Sungero.Core.Public]
       public const string DepartmentTypeGuid = "61b1c19f-26e2-49a5-b3d3-0d3618151e12";
+      
+      /// <summary>
+      /// GUID справочника "Вид документа".
+      /// </summary>
+      [Sungero.Core.Public]
+      public const string DocumentKindGuid = "14a59623-89a2-4ea8-b6e9-2ad4365f358c";
     }
   }
 }
