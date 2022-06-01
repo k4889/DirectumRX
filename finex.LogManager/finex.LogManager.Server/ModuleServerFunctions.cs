@@ -288,7 +288,8 @@ namespace finex.LogManager.Server
       // Получить текущую конфигурацию логгера
       var configuration = NLog.LogManager.Configuration;
       
-      //Включить запись ошибок логирования (после записи, логирование ошибок надо отключить)
+      //ТОЛЬКО ДЛЯ ТЕСТИРОВАНИЯ: Включить запись ошибок логирования (после записи, логирование ошибок надо отключить)
+      //NLog.LogManager.ThrowExceptions = true;
       //NLog.LogManager.ThrowConfigExceptions = true;
       
       // Добавить новую цепочку записи в текущую конфигурацию
@@ -327,6 +328,7 @@ namespace finex.LogManager.Server
       
       NLog.LogManager.Flush();
       
+      //NLog.LogManager.ThrowExceptions = false;
       //NLog.LogManager.ThrowConfigExceptions = false;
     }
     
