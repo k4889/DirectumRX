@@ -21,7 +21,7 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Trace(string fileName, string message)
     {
-      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Trace.Name);
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Trace.Name, false);
     }
     
     /// <summary>
@@ -33,7 +33,32 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Trace(string folderName, string fileName, string message)
     {
-      WriteLog(folderName, fileName, message, NLog.LogLevel.Trace.Name);
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Trace.Name, false);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Trace(string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Trace.Name, isWriteToFolderProcess);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="folderName">Имя папки</param>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Trace(string folderName, string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Trace.Name, isWriteToFolderProcess);
     }
     
     #endregion
@@ -48,7 +73,7 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Info(string fileName, string message)
     {
-      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Info.Name);
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Info.Name, false);
     }
     
     /// <summary>
@@ -60,7 +85,32 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Info(string folderName, string fileName, string message)
     {
-      WriteLog(folderName, fileName, message, NLog.LogLevel.Info.Name);
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Info.Name, false);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Info(string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Info.Name, isWriteToFolderProcess);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="folderName">Имя папки</param>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Info(string folderName, string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Info.Name, isWriteToFolderProcess);
     }
     
     #endregion
@@ -75,7 +125,7 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Debug(string fileName, string message)
     {
-      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Debug.Name);
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Debug.Name, false);
     }
     
     /// <summary>
@@ -87,7 +137,32 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Debug(string folderName, string fileName, string message)
     {
-      WriteLog(folderName, fileName, message, NLog.LogLevel.Debug.Name);
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Debug.Name, false);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Debug(string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Debug.Name, isWriteToFolderProcess);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="folderName">Имя папки</param>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Debug(string folderName, string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Debug.Name, isWriteToFolderProcess);
     }
     
     #endregion
@@ -102,7 +177,7 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Warn(string fileName, string message)
     {
-      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Warn.Name);
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Warn.Name, false);
     }
     
     /// <summary>
@@ -114,7 +189,32 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Warn(string folderName, string fileName, string message)
     {
-      WriteLog(folderName, fileName, message, NLog.LogLevel.Warn.Name);
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Warn.Name, false);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Warn(string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Warn.Name, isWriteToFolderProcess);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="folderName">Имя папки</param>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Warn(string folderName, string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Warn.Name, isWriteToFolderProcess);
     }
     
     #endregion
@@ -129,7 +229,7 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Error(string fileName, string message)
     {
-      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Error.Name);
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Error.Name, false);
     }
 
     /// <summary>
@@ -141,7 +241,32 @@ namespace finex.LogManager.Server
     [Remote(IsPure=true), Public]
     public static void Error(string folderName, string fileName, string message)
     {
-      WriteLog(folderName, fileName, message, NLog.LogLevel.Error.Name);
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Error.Name, false);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Error(string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(string.Empty, fileName, message, NLog.LogLevel.Error.Name, isWriteToFolderProcess);
+    }
+    
+    /// <summary>
+    /// Записать сообщение в лог
+    /// </summary>
+    /// <param name="folderName">Имя папки</param>
+    /// <param name="fileName">Имя файла</param>
+    /// <param name="message">Сообщение</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    [Remote(IsPure=true), Public]
+    public static void Error(string folderName, string fileName, string message, bool isWriteToFolderProcess)
+    {
+      WriteLog(folderName, fileName, message, NLog.LogLevel.Error.Name, isWriteToFolderProcess);
     }
     
     #endregion
@@ -157,15 +282,17 @@ namespace finex.LogManager.Server
     /// <param name="fileName">Имя лог файла</param>
     /// <param name="message">Сообщение</param>
     /// <param name="logLevelName">Уровень логирования</param>
-    private static void WriteLog(string folderName, string fileName, string message, string logLevelName)
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    private static void WriteLog(string folderName, string fileName, string message, string logLevelName, bool isWriteToFolderProcess)
     {
       // Получить текущую конфигурацию логгера
       var configuration = NLog.LogManager.Configuration;
       
+      //Включить запись ошибок логирования (после записи, логирование ошибок надо отключить)
       //NLog.LogManager.ThrowConfigExceptions = true;
       
       // Добавить новую цепочку записи в текущую конфигурацию
-      var fileTarget = CreateTarget(configuration, folderName, fileName);
+      var fileTarget = CreateTarget(configuration, folderName, fileName, isWriteToFolderProcess);
       if (fileTarget != null)
         configuration.AddTarget(fileTarget);
       
@@ -199,25 +326,32 @@ namespace finex.LogManager.Server
       }
       
       NLog.LogManager.Flush();
+      
+      //NLog.LogManager.ThrowConfigExceptions = false;
     }
     
     /// <summary>
     /// Создать цепочку записи
     /// </summary>
-    /// <param name="configuration"></param>
-    /// <param name="fileName"></param>
-    /// <returns></returns>
-    private static NLog.Targets.FileTarget CreateTarget(NLog.Config.LoggingConfiguration configuration, string folderName, string fileName)
+    /// <param name="configuration">Конфигурация логгера</param>
+    /// <param name="folderName">Имя папки</param>
+    /// <param name="fileName">Имя лог файла</param>
+    /// <param name="isWriteToFolderProcess">Записывать лог в родительскую папку процесса</param>
+    /// <returns>Цепочка записи FileTarget</returns>
+    private static NLog.Targets.FileTarget CreateTarget(NLog.Config.LoggingConfiguration configuration, string folderName, string fileName, bool isWriteToFolderProcess)
     {
       if (configuration == null)
         return null;
       
-      //var folderPatch = "C:\\";
       var folderPatch = configuration.Variables["logs-path"].Text;
-      var parentFolder = System.IO.Directory.GetParent(folderPatch);
-      if (parentFolder != null)
-        folderPatch = parentFolder.FullName;
-
+      
+      if (!isWriteToFolderProcess)
+      {
+        var parentFolder = System.IO.Directory.GetParent(folderPatch);
+        if (parentFolder != null)
+          folderPatch = string.Format("{0}\\DrxCustomLogs", parentFolder.FullName);
+      }
+      
       if (!string.IsNullOrEmpty(folderName))
         folderPatch = string.Format("{0}\\{1}", folderPatch, folderName);
       
@@ -225,6 +359,7 @@ namespace finex.LogManager.Server
       fileTarget.Name = "finex-custom-logs";
       fileTarget.FileName = string.Format("{0}\\${{machinename}}.{1}.${{shortdate}}.log", folderPatch, fileName);
       fileTarget.Layout = configuration.Variables["file-layout"].Text;
+      //На всякий случай оставил, чтобы была возможность собрать строку лога руками
       //fileTarget.Layout = "${odate}${assembly-version}${processid:padding=6}+${threadid:padding=-2} ${level:padding=-5}${fixed-length:inner=${logger}:maxLength=45:keepRightPart=true:padding=45} - ${ndc:separator=, :addToStart= :addToEnd=\\:}${message} ${onexception:${event-properties:item=description:WhenEmpty=Contact your system administrator}} [${event-properties:item=userName:WhenEmpty=unknown} :${event-properties:item=tenant:WhenEmpty=unknown}]${onexception:${newline}${exception:format=tostring}}";
       return fileTarget;
     }
