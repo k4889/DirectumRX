@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sungero.Core;
 using Sungero.CoreEntities;
+using System.IO;
 
 namespace finex.LogManager.Server
 {
@@ -288,7 +289,7 @@ namespace finex.LogManager.Server
       // Получить текущую конфигурацию логгера
       var configuration = NLog.LogManager.Configuration;
       
-      //ТОЛЬКО ДЛЯ ТЕСТИРОВАНИЯ: Включить запись ошибок логирования (после записи, логирование ошибок надо отключить)
+      //ТОЛЬКО ДЛЯ ТЕСТИРОВАНИЯ: Включить запись ошибок логирования (после тестирования, логирование ошибок надо отключить)
       //NLog.LogManager.ThrowExceptions = true;
       //NLog.LogManager.ThrowConfigExceptions = true;
       
@@ -298,12 +299,12 @@ namespace finex.LogManager.Server
         configuration.AddTarget(fileTarget);
       
       // Добавить новое правило в текущую конфигурацию
-      var loggingRule = CreateRule(fileName, fileTarget);
+      var loggingRule = CreateRule(configuration, fileName, fileTarget);
       if (loggingRule != null)
         configuration.LoggingRules.Insert(0, loggingRule);
       
-      // Перезагрузим текущую конфигурацию
-      configuration.Reload();
+      // Перезагрузим текущую конфигурацию      
+      NLog.LogManager.ReconfigExistingLoggers();
       
       var logger = NLog.LogManager.GetLogger(fileName);
       
@@ -327,9 +328,6 @@ namespace finex.LogManager.Server
       }
       
       NLog.LogManager.Flush();
-      
-      //NLog.LogManager.ThrowExceptions = false;
-      //NLog.LogManager.ThrowConfigExceptions = false;
     }
     
     /// <summary>
@@ -345,40 +343,58 @@ namespace finex.LogManager.Server
       if (configuration == null)
         return null;
       
+      var targetName = "finex-custom-terget";
+      var fileTarget = (NLog.Targets.FileTarget)configuration.FindTargetByName(targetName);
+      if (fileTarget != null)
+        return null;
+      
       var folderPatch = configuration.Variables["logs-path"].Text;
       
       if (!isWriteToFolderProcess)
       {
-        var parentFolder = System.IO.Directory.GetParent(folderPatch);
+        var parentFolder = Directory.GetParent(folderPatch);
         if (parentFolder != null)
-          folderPatch = string.Format("{0}\\DrxCustomLogs", parentFolder.FullName);
+          folderPatch = Path.Combine(parentFolder.FullName, "DrxCustomLogs");
       }
       
       if (!string.IsNullOrEmpty(folderName))
-        folderPatch = string.Format("{0}\\{1}", folderPatch, folderName);
+        folderPatch = Path.Combine(folderPatch, folderName);
       
-      var fileTarget = new NLog.Targets.FileTarget();
-      fileTarget.Name = "finex-custom-logs";
+      fileTarget = new NLog.Targets.FileTarget();
+      fileTarget.Name = targetName;
       fileTarget.FileName = string.Format("{0}\\${{machinename}}.{1}.${{shortdate}}.log", folderPatch, fileName);
-      fileTarget.Layout = configuration.Variables["file-layout"].Text;
-      //На всякий случай оставил, чтобы была возможность собрать строку лога руками
-      //fileTarget.Layout = "${odate}${assembly-version}${processid:padding=6}+${threadid:padding=-2} ${level:padding=-5}${fixed-length:inner=${logger}:maxLength=45:keepRightPart=true:padding=45} - ${ndc:separator=, :addToStart= :addToEnd=\\:}${message} ${onexception:${event-properties:item=description:WhenEmpty=Contact your system administrator}} [${event-properties:item=userName:WhenEmpty=unknown} :${event-properties:item=tenant:WhenEmpty=unknown}]${onexception:${newline}${exception:format=tostring}}";
+      
+      NLog.Targets.FileTarget baseTarget = null;
+      var target = configuration.FindTargetByName("file");
+      var wrapperTarget = target as NLog.Targets.Wrappers.WrapperTargetBase;
+      if (wrapperTarget == null)
+        baseTarget = target as NLog.Targets.FileTarget;
+      else
+        baseTarget = wrapperTarget.WrappedTarget as NLog.Targets.FileTarget;
+      
+      if (baseTarget != null)
+        fileTarget.Layout = baseTarget.Layout;
+      else
+        fileTarget.Layout = "${odate}${assembly-version}${processid:padding=6}+${threadid:padding=-2} ${level:padding=-5}${fixed-length:inner=${logger}:maxLength=45:keepRightPart=true:padding=45} - ${ndc:separator=, :addToStart= :addToEnd=\\:}${message} ${onexception:${event-properties:item=description:WhenEmpty=Contact your system administrator}} [${event-properties:item=userName:WhenEmpty=unknown} :${event-properties:item=tenant:WhenEmpty=unknown}]${onexception:${newline}${exception:format=tostring}}";
+      
       return fileTarget;
     }
     
     /// <summary>
     /// Создать правило записи
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="fileTarget"></param>
+    /// <param name="configuration">Конфигурация логгера</param>
+    /// <param name="fileName">Имя лог файла</param>
+    /// <param name="fileTarget">Цепочка записи</param>
     /// <returns></returns>
-    private static NLog.Config.LoggingRule CreateRule(string fileName, NLog.Targets.FileTarget fileTarget)
+    private static NLog.Config.LoggingRule CreateRule(NLog.Config.LoggingConfiguration configuration, string fileName, NLog.Targets.FileTarget fileTarget)
     {
       if (fileTarget == null)
         return null;
       
       var loggingRule = new NLog.Config.LoggingRule(fileName, NLog.LogLevel.Trace, NLog.LogLevel.Error, fileTarget);
       loggingRule.Final = true;
+      
       return loggingRule;
     }
     
