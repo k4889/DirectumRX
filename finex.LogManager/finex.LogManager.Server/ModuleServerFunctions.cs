@@ -362,7 +362,7 @@ namespace finex.LogManager.Server
       
       fileTarget = new NLog.Targets.FileTarget();
       fileTarget.Name = targetName;
-      fileTarget.FileName = string.Format("{0}\\${{machinename}}.{1}.${{shortdate}}.log", folderPatch, fileName);
+      fileTarget.FileName = string.Format("{0}/${{machinename}}.{1}.${{shortdate}}.log", folderPatch, fileName);
       
       NLog.Targets.FileTarget baseTarget = null;
       var target = configuration.FindTargetByName("file");
