@@ -350,7 +350,7 @@ namespace finex.LogManager.Server
       
       var folderPatch = configuration.Variables["logs-path"].Text;
       
-      if (!isWriteToFolderProcess)
+      if (!isWriteToFolderProcess && !System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
       {
         var parentFolder = Directory.GetParent(folderPatch);
         if (parentFolder != null)
