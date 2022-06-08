@@ -289,22 +289,32 @@ namespace finex.LogManager.Server
       // Получить текущую конфигурацию логгера
       var configuration = NLog.LogManager.Configuration;
       
-      //ТОЛЬКО ДЛЯ ТЕСТИРОВАНИЯ: Включить запись ошибок логирования (после тестирования, логирование ошибок надо отключить)
+      //ТОЛЬКО ДЛЯ ТЕСТИРОВАНИЯ: 
+      //Включить запись ошибок логирования (после тестирования, логирование ошибок надо отключить)
       //NLog.LogManager.ThrowExceptions = true;
       //NLog.LogManager.ThrowConfigExceptions = true;
+      
+      var isReconfig = false;
       
       // Добавить новую цепочку записи в текущую конфигурацию
       var fileTarget = CreateTarget(configuration, folderName, fileName, isWriteToFolderProcess);
       if (fileTarget != null)
+      {
         configuration.AddTarget(fileTarget);
+        isReconfig = true;
+      }
       
       // Добавить новое правило в текущую конфигурацию
       var loggingRule = CreateRule(configuration, fileName, fileTarget);
       if (loggingRule != null)
+      {
         configuration.LoggingRules.Insert(0, loggingRule);
+        isReconfig = true;
+      }
       
-      // Перезагрузим текущую конфигурацию      
-      NLog.LogManager.ReconfigExistingLoggers();
+      // Перезагрузим текущую конфигурацию
+      if (isReconfig)
+        NLog.LogManager.ReconfigExistingLoggers();
       
       var logger = NLog.LogManager.GetLogger(fileName);
       
@@ -343,7 +353,7 @@ namespace finex.LogManager.Server
       if (configuration == null)
         return null;
       
-      var targetName = "finex-custom-terget";
+      var targetName = string.Format("customTarget{0}", fileName);
       var fileTarget = (NLog.Targets.FileTarget)configuration.FindTargetByName(targetName);
       if (fileTarget != null)
         return null;
@@ -389,7 +399,7 @@ namespace finex.LogManager.Server
     /// <returns></returns>
     private static NLog.Config.LoggingRule CreateRule(NLog.Config.LoggingConfiguration configuration, string fileName, NLog.Targets.FileTarget fileTarget)
     {
-      if (fileTarget == null)
+      if (configuration == null || fileTarget == null)
         return null;
       
       var loggingRule = new NLog.Config.LoggingRule(fileName, NLog.LogLevel.Trace, NLog.LogLevel.Error, fileTarget);
