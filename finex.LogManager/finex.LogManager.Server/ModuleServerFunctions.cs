@@ -305,7 +305,7 @@ namespace finex.LogManager.Server
       }
       
       // Добавить новое правило в текущую конфигурацию
-      var loggingRule = CreateRule(configuration, fileName, fileTarget);
+      var loggingRule = CreateRule(fileName, fileTarget);
       if (loggingRule != null)
       {
         configuration.LoggingRules.Insert(0, loggingRule);
@@ -393,13 +393,12 @@ namespace finex.LogManager.Server
     /// <summary>
     /// Создать правило записи
     /// </summary>
-    /// <param name="configuration">Конфигурация логгера</param>
     /// <param name="fileName">Имя лог файла</param>
     /// <param name="fileTarget">Цепочка записи</param>
     /// <returns></returns>
-    private static NLog.Config.LoggingRule CreateRule(NLog.Config.LoggingConfiguration configuration, string fileName, NLog.Targets.FileTarget fileTarget)
+    private static NLog.Config.LoggingRule CreateRule(string fileName, NLog.Targets.FileTarget fileTarget)
     {
-      if (configuration == null || fileTarget == null)
+      if (fileTarget == null)
         return null;
       
       var loggingRule = new NLog.Config.LoggingRule(fileName, NLog.LogLevel.Trace, NLog.LogLevel.Error, fileTarget);
