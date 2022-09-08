@@ -101,7 +101,7 @@
   "SharedAssemblyName": "finex.AdditionalSettingsUI.Shared",
   "SharedNamespace": "finex.AdditionalSettingsUI.Shared",
   "SpecialFolders": [],
-  "Version": "0.0.2.8",
+  "Version": "0.0.2.9",
   "Widgets": [],
   "Versions": [
     {
