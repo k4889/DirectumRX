@@ -12,6 +12,7 @@ using Aspose.Pdf.Text;
 using PdfSharp.Pdf;
 //using Sungero.AsposeExtensions;
 using System.IO.Packaging;
+using System.Net.Mail;
 
 namespace finex.CollectionFunctions.Server
 {
@@ -2065,6 +2066,20 @@ namespace finex.CollectionFunctions.Server
       {
         using (var mailClient = new System.Net.Mail.SmtpClient())
         {
+          #region нелегал? - получение конфигов (в RX 4+ конфиги SMTP не пробрасываются в .NET)
+          var settings = Sungero.Domain.Server.AppSettings?.Instance.SmtpClientSettings;
+          if (settings != null)
+          {
+            mailClient.Host = settings.Host;
+            mailClient.Port = settings.Port;
+            mailClient.EnableSsl = settings.EnableSsl;
+            if (!string.IsNullOrEmpty(settings.UserName))
+            {
+              mailClient.Credentials = new System.Net.NetworkCredential(settings.UserName, settings.Password);
+            }
+          }
+          #endregion
+            
           using (var mail = new System.Net.Mail.MailMessage
                  {
                    Body = body,
@@ -2075,6 +2090,13 @@ namespace finex.CollectionFunctions.Server
                    BodyEncoding = System.Text.Encoding.UTF8
                  })
           {
+            #region нелегал? - получение конфигов (в RX 4+ конфиги SMTP не пробрасываются в .NET)
+            if (settings != null)
+            {
+              mail.From = new MailAddress(settings.From, settings.FromDisplayName);
+            }
+            #endregion
+              
             mail.To.Add(to);
             
             foreach (var email in cc)
