@@ -2067,7 +2067,7 @@ namespace finex.CollectionFunctions.Server
         using (var mailClient = new System.Net.Mail.SmtpClient())
         {
           #region нелегал? - получение конфигов (в RX 4+ конфиги SMTP не пробрасываются в .NET)
-          var settings = Sungero.Domain.Server.AppSettings?.Instance.SmtpClientSettings;
+          var settings = Sungero.Domain.Server.AppSettings.Instance.SmtpClientSettings;
           if (settings != null)
           {
             mailClient.Host = settings.Host;
